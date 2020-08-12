@@ -1,0 +1,1 @@
+execute:from rasiin.install import after_install; after_install() # 1

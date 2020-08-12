@@ -1,0 +1,6 @@
+{
+	"js/rasiin.min.js": [
+		"public/js/common.js",
+		"public/js/hide_list.js"
+	]
+  }
