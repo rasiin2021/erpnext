@@ -13,7 +13,9 @@ def validate_discount_level(doc, method=None):
         return
 
     current_discount = flt(
-        doc.discount_amount / (doc.total + doc.total_taxes_and_charges), 5
+        flt(doc.discount_amount) / (
+            flt(doc.total) + flt(doc.total_taxes_and_charges)
+        ), 5
     ) * 100
 
     user_roles = frappe.get_roles()
