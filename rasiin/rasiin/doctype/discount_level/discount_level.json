@@ -12,19 +12,20 @@
    "fieldname": "discount_allowed",
    "fieldtype": "Percent",
    "in_list_view": 1,
-   "label": "Percent Discount Allowed",
-   "width": "2"
+   "label": "% Discount Allowed"
   },
   {
    "fieldname": "role",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Role",
-   "options": "Role"
+   "options": "Role",
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "istable": 1,
- "modified": "2021-06-23 17:09:26.978872",
+ "modified": "2021-06-23 15:03:56.215430",
  "modified_by": "Administrator",
  "module": "Rasiin",
  "name": "Discount Level",
