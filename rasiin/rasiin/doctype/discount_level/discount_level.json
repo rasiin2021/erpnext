@@ -1,0 +1,37 @@
+{
+ "creation": "2021-06-23 16:52:30.793260",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "role",
+  "discount_allowed"
+ ],
+ "fields": [
+  {
+   "fieldname": "discount_allowed",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Percent Discount Allowed",
+   "width": "2"
+  },
+  {
+   "fieldname": "role",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Role",
+   "options": "Role"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-06-23 17:09:26.978872",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Discount Level",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
