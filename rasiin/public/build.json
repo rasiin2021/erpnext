@@ -1,6 +1,8 @@
 {
 	"js/rasiin.min.js": [
 		"public/js/common.js",
-		"public/js/hide_list.js"
+		"public/js/hide_list.js",
+		"public/js/hide_buttons.js",
+		"public/js/sales_trends_filters.js"
 	]
   }

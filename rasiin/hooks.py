@@ -15,7 +15,14 @@ after_install = "rasiin.install.after_install"
 app_include_js = "/assets/js/rasiin.min.js"
 
 doctype_js = {
-    "Sales Invoice": "scripts/sales_invoice.js"
+    "Sales Invoice": "scripts/sales_invoice.js",
+    "Material Request": "scripts/material_request.js",
+    "Lab Test": "scripts/lab_test.js"
+}
+
+doctype_list_js = {
+    "Issue": "scripts/issue_list.js",
+    "Patient Appointment": "scripts/patient_appointment_list.js"
 }
 
 doc_events = {
