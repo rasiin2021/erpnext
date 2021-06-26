@@ -23,3 +23,12 @@ doc_events = {
         "validate": "rasiin.api.sales_invoice.validate_discount_level"
     }
 }
+
+override_doctype_class = {
+	"Patient Appointment": "rasiin.override.patient_appointment.CustomPatientAppointment",
+}
+
+override_doctype_dashboards = {
+	"Patient": "rasiin.api.patient_appointment.get_data",
+	"Patient Appointment": "rasiin.api.patient_appointment_dashboard.get_data",
+}
