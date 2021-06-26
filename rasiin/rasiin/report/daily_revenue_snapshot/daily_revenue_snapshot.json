@@ -1,0 +1,45 @@
+{
+ "add_total_row": 0,
+ "creation": "2021-01-07 09:50:00.674877",
+ "disable_prepared_report": 0,
+ "disabled": 1,
+ "docstatus": 0,
+ "doctype": "Report",
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "SSSH",
+ "modified": "2021-06-25 16:55:19.048088",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Daily Revenue Snapshot",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "select 'Revenue' As \"Report Type\",\r\n(select   concat(FORMAT(IFNULL(sum(G.credit) - sum(G.debit),0) ,0,'en_US'),' $')  AS \"Total:Link/Account:100\" \r\nfrom `tabGL Entry` as G , `tabAccount` as A \r\nwhere G.account = A.name and A.root_type like '%%Income%%' \r\nand G.posting_date >= %(from_date)s\r\nand G.posting_date <= %(to_date)s\r\nand A.company = 'Somali Sudanese Specialized Hospital' and \r\nG.docstatus = 1) as FTD ,\r\n\r\n\r\n(select   concat(FORMAT(IFNULL(sum(G.credit) - sum(G.debit),0) ,0,'en_US'),' $') AS \"Total:Link/Account:100\" \r\nfrom `tabGL Entry` as G , `tabAccount` as A \r\nwhere G.account = A.name and A.root_type like '%%Income%%' \r\nand   MONTH(G.posting_date)=MONTH(CURRENT_DATE() ) AND\r\nYEAR(G.posting_date)=YEAR(CURRENT_DATE() -1 )\r\nand A.company = 'Somali Sudanese Specialized Hospital' and \r\nG.docstatus = 1) as MTD ,\r\n\r\n\r\n(select  concat(FORMAT(IFNULL(sum(G.credit) - sum(G.debit),0) ,0,'en_US'),' $')  AS \"Total:Link/Account:100\" \r\nfrom `tabGL Entry` as G , `tabAccount` as A \r\nwhere G.account = A.name and A.root_type like '%%Income%%' \r\nand YEAR(G.posting_date)=YEAR(CURRENT_DATE() -1)\r\nand A.company = 'Somali Sudanese Specialized Hospital' and \r\nG.docstatus = 1) as YTD \r\nfrom `tabGL Entry` as G , `tabAccount` as A \r\nwhere G.account = A.name \r\nand  A.root_type  like '%%Income%%'\r\nand A.company = 'Somali Sudanese Specialized Hospital'\r\nand G.docstatus = 1 \r\ngroup by 'Revenue' \r\n\r\nunion\r\n\r\nselect  'OPD New Appointment' ,\r\n(select concat(FORMAT( count(*),0,'en_US'),' ')\r\nfrom `tabPatient Appointment` \r\nwhere appointment_date  = curdate() -1 ) as  FTD ,\r\n\r\n\r\n(select  concat(FORMAT (count(*),0,'en_US'),' ')\r\nfrom `tabPatient Appointment` \r\nwhere MONTH(appointment_date)= MONTH(CURRENT_DATE()) \r\nAND YEAR(appointment_date)=YEAR(CURRENT_DATE()-1))  AS FTM ,\r\n\r\n(select  concat(FORMAT(count(*),0,'en_US'),' ')\r\nfrom `tabPatient Appointment` \r\nwhere  YEAR(appointment_date)=YEAR(CURRENT_DATE()))  AS FTY \r\n\r\nfrom `tabPatient Appointment` \r\n\r\ngroup by 'Appointment'\r\n\r\n\r\nunion\r\n\r\nselect  'OPD Follow Up',\r\n(select  concat(FORMAT(count(*),0,'en_US'),' ')\r\nfrom `tabFollow Up` \r\nwhere f_date =  curdate() -1 ) as  FTD ,\r\n\r\n\r\n(select  concat(FORMAT(count(*),0,'en_US'),' ')\r\nfrom `tabFollow Up` \r\nwhere MONTH(f_date)= MONTH(CURRENT_DATE() ) \r\nAND YEAR(f_date)=YEAR(CURRENT_DATE()))  AS FTM ,\r\n\r\n(select  concat(FORMAT(count(*),0,'en_US'),' ')\r\nfrom `tabFollow Up` \r\nwhere  YEAR(f_date)=YEAR(CURRENT_DATE()))  AS FTY \r\n\r\nfrom `tabFollow Up` \r\n\r\ngroup by 'Follow Up'\r\n\r\n",
+ "ref_doctype": "GL Entry",
+ "reference_report": "Report Type",
+ "report_name": "Daily Revenue Snapshot",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Auditor"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Cashiers Role"
+  },
+  {
+   "role": "Pharmacy User"
+  },
+  {
+   "role": "Branches Role"
+  },
+  {
+   "role": "Main Store"
+  }
+ ]
+}

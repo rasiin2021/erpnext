@@ -1,0 +1,70 @@
+{
+ "allow_copy": 1,
+ "allow_import": 1,
+ "autoname": "field:symptoms",
+ "beta": 1,
+ "creation": "2021-01-11 20:41:41.994731",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "symptoms",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "symptoms",
+   "fieldtype": "Data",
+   "ignore_xss_filter": 1,
+   "in_list_view": 1,
+   "label": "Symptoms",
+   "unique": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Symptoms",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "hide_toolbar": 1,
+ "modified": "2021-06-25 16:13:17.448205",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Symptoms",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Healthcare Administrator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "symptoms",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "symptoms",
+ "track_changes": 1
+}

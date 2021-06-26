@@ -1,0 +1,149 @@
+{
+ "creation": "2021-01-30 14:18:34.997901",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tagnumber",
+  "serial",
+  "name1",
+  "reg_location",
+  "brand",
+  "model",
+  "purchase_date",
+  "bayer",
+  "grantee_end",
+  "contact_number",
+  "reg_date",
+  "current_location",
+  "status",
+  "life_time",
+  "remark",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "tagnumber",
+   "fieldtype": "Data",
+   "label": "TagNumber"
+  },
+  {
+   "fieldname": "serial",
+   "fieldtype": "Data",
+   "label": "Serial"
+  },
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "reg_location",
+   "fieldtype": "Data",
+   "label": "Reg Location"
+  },
+  {
+   "fieldname": "brand",
+   "fieldtype": "Data",
+   "label": "Brand"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model"
+  },
+  {
+   "fieldname": "purchase_date",
+   "fieldtype": "Datetime",
+   "label": "Purchase Date"
+  },
+  {
+   "fieldname": "bayer",
+   "fieldtype": "Data",
+   "label": "Bayer"
+  },
+  {
+   "fieldname": "grantee_end",
+   "fieldtype": "Data",
+   "label": "Grantee End"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number"
+  },
+  {
+   "fieldname": "reg_date",
+   "fieldtype": "Date",
+   "label": "Reg Date"
+  },
+  {
+   "fieldname": "current_location",
+   "fieldtype": "Data",
+   "label": "Current Location"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nFunction\nDamaged\nNon Function\nScrap\nNeed Spare Party"
+  },
+  {
+   "fieldname": "life_time",
+   "fieldtype": "Date",
+   "label": "Life Time"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Text Editor",
+   "label": "Remark"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Asset Registration Form",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2021-06-25 16:31:41.746445",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Asset Registration Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Stock User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

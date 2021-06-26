@@ -1,0 +1,98 @@
+{
+ "creation": "2021-01-30 14:08:28.537207",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "donor_id",
+  "donor_full_name",
+  "status",
+  "date_donated",
+  "date_transfused",
+  "taken_by",
+  "mobile",
+  "gender",
+  "region",
+  "district"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "donor_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Donor ID",
+   "options": "Patient"
+  },
+  {
+   "fetch_from": "donor_id.patient_name",
+   "fieldname": "donor_full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Donor Full Name"
+  },
+  {
+   "columns": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "\nDonated\nTransfused"
+  },
+  {
+   "fieldname": "date_donated",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date Donated"
+  },
+  {
+   "fieldname": "date_transfused",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date Transfused"
+  },
+  {
+   "fetch_from": "donor_id.mobile",
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile"
+  },
+  {
+   "fetch_from": "donor_id.sex",
+   "fieldname": "gender",
+   "fieldtype": "Data",
+   "label": "Gender"
+  },
+  {
+   "fetch_from": "donor_id.region",
+   "fieldname": "region",
+   "fieldtype": "Data",
+   "label": "Region"
+  },
+  {
+   "fetch_from": "donor_id.district",
+   "fieldname": "district",
+   "fieldtype": "Data",
+   "label": "District"
+  },
+  {
+   "fieldname": "taken_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Taken By"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-06-25 16:31:42.542001",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "bloodbank",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

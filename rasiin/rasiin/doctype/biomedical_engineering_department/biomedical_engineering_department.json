@@ -1,0 +1,130 @@
+{
+ "creation": "2021-04-01 09:36:56.560762",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "registration_of_equipment_movement_form",
+  "date",
+  "section_break_2",
+  "source_of_department",
+  "custodian",
+  "time_of_management",
+  "column_break_6",
+  "receiving_department",
+  "custodian_id",
+  "time_of_return",
+  "equipment_out_section",
+  "equipment_out",
+  "equipment_return"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "source_of_department",
+   "fieldtype": "Link",
+   "label": "Source of Department ",
+   "options": "Medical Department"
+  },
+  {
+   "fieldname": "custodian",
+   "fieldtype": "Link",
+   "label": "Custodian ",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "time_of_management",
+   "fieldtype": "Datetime",
+   "label": "Time of Movement "
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Registration of Equipment Movement Form",
+   "fieldname": "registration_of_equipment_movement_form",
+   "fieldtype": "Data",
+   "label": "Registration of Equipment Movement Form",
+   "read_only": 1
+  },
+  {
+   "fieldname": "receiving_department",
+   "fieldtype": "Link",
+   "label": "Receiving Department",
+   "options": "Medical Department"
+  },
+  {
+   "fieldname": "custodian_id",
+   "fieldtype": "Link",
+   "label": "custodian ID",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "time_of_return",
+   "fieldtype": "Datetime",
+   "label": "Time of Return"
+  },
+  {
+   "fieldname": "equipment_out_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment Out"
+  },
+  {
+   "fieldname": "equipment_out",
+   "fieldtype": "Table",
+   "label": "Equipment Out",
+   "options": "Equipment Out"
+  },
+  {
+   "fieldname": "equipment_return",
+   "fieldtype": "Table",
+   "label": "Equipment Return",
+   "options": "Equipment Return"
+  }
+ ],
+ "modified": "2021-06-25 16:31:43.272236",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Biomedical Engineering Department",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Biomedical Role",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

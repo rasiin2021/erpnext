@@ -1,0 +1,61 @@
+{
+ "autoname": "IPCD.#######",
+ "creation": "2021-01-19 17:11:04.399335",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section",
+  "section_control_point",
+  "review_type",
+  "review_rating",
+  "remark"
+ ],
+ "fields": [
+  {
+   "fieldname": "section",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Parameters",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_control_point",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Objective Element",
+   "read_only": 1
+  },
+  {
+   "fieldname": "review_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Review Type",
+   "options": "SI\nRR\nOB"
+  },
+  {
+   "fieldname": "review_rating",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Review Rating",
+   "options": "0\n5\n10"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Remark"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-06-25 16:11:56.658818",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "IPC Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

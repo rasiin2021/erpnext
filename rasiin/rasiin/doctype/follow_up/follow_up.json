@@ -1,0 +1,228 @@
+{
+ "allow_copy": 1,
+ "allow_import": 1,
+ "autoname": "PFU-.######",
+ "creation": "2020-07-25 00:35:07.235989",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "inpatient_record",
+  "patient",
+  "patient_id",
+  "patient_name",
+  "department",
+  "token_number",
+  "pre_app_date",
+  "practitioner",
+  "source",
+  "status",
+  "section_break_16",
+  "procedure_template",
+  "patient_sex",
+  "mobile",
+  "column_break_21",
+  "company",
+  "notes",
+  "f_date"
+ ],
+ "fields": [
+  {
+   "fetch_from": "patient.inpatient_record",
+   "fieldname": "inpatient_record",
+   "fieldtype": "Link",
+   "label": "Inpatient Record",
+   "options": "Inpatient Record",
+   "read_only": 1
+  },
+  {
+   "fieldname": "patient",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "in_standard_filter": 1,
+   "label": "Appointment ID",
+   "options": "Patient Appointment",
+   "reqd": 1,
+   "search_index": 1,
+   "set_only_once": 1
+  },
+  {
+   "default": "Scheduled",
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_filter": 1,
+   "label": "Status",
+   "options": "\nScheduled\nOpen\nIn Progress\nClosed\nPending\nCancelled\nConfirmed\nNo show\nArrived\nChecked out",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "depends_on": "eval: !doc.radiology_procedure",
+   "fieldname": "procedure_template",
+   "fieldtype": "Link",
+   "label": "Procedure",
+   "options": "Clinical Procedure Template"
+  },
+  {
+   "fetch_from": "patient.practitioner",
+   "fieldname": "practitioner",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "in_standard_filter": 1,
+   "label": "Healthcare Practitioner",
+   "options": "Healthcare Practitioner",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "patient.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Department",
+   "options": "Medical Department",
+   "read_only": 1,
+   "search_index": 1,
+   "set_only_once": 1
+  },
+  {
+   "default": "Direct",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "\nDirect\nReferral\nExternal Referral"
+  },
+  {
+   "fieldname": "section_break_16",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "patient.patient_name",
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "label": "Patient Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient.patient_sex",
+   "fieldname": "patient_sex",
+   "fieldtype": "Data",
+   "label": "Gender",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "column_break_21",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "no_copy": 1,
+   "options": "Company",
+   "print_hide": 1,
+   "read_only": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "ignore_xss_filter": 1,
+   "label": "Notes"
+  },
+  {
+   "fetch_from": "patient.mobile",
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Mobile",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "pre_app_date.appointment_date",
+   "fieldname": "pre_app_date",
+   "fieldtype": "Date",
+   "label": "Pre Appointment Date"
+  },
+  {
+   "fetch_from": "patient.patient",
+   "fieldname": "patient_id",
+   "fieldtype": "Data",
+   "label": "Patient",
+   "read_only": 1
+  },
+  {
+   "fieldname": "token_number",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "token_number"
+  },
+  {
+   "default": "Today",
+   "fieldname": "f_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "F Date",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "modified": "2021-06-25 16:31:40.469773",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Follow Up",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Healthcare Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Physician",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Nursing User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "restrict_to_domain": "Healthcare",
+ "search_fields": "patient, practitioner, department",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "patient_name",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

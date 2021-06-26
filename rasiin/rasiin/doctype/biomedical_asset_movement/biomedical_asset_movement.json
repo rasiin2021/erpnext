@@ -1,0 +1,89 @@
+{
+ "creation": "2021-01-30 14:33:14.939387",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "device_name",
+  "asset_tag",
+  "location",
+  "transfer_date",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "device_name",
+   "fieldtype": "Link",
+   "label": "Device Name",
+   "options": "Asset Registration Form"
+  },
+  {
+   "fieldname": "asset_tag",
+   "fieldtype": "Data",
+   "label": "Asset Tag"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "label": "Location",
+   "options": "Medical Department"
+  },
+  {
+   "fieldname": "transfer_date",
+   "fieldtype": "Date",
+   "label": "Transfer Date"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Biomedical Asset Movement",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2021-06-25 16:31:42.121318",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Biomedical Asset Movement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "device_name",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

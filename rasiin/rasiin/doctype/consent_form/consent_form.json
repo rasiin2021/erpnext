@@ -1,0 +1,76 @@
+{
+ "creation": "2020-08-25 13:42:49.419299",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1",
+  "text",
+  "data_3",
+  "data_4",
+  "data_5",
+  "data_6",
+  "data_7",
+  "data_8"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "data_3",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "data_4",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "data_5",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "data_6",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "data_7",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "data_8",
+   "fieldtype": "Data"
+  },
+  {
+   "bold": 1,
+   "description": "Waxaan Cadeynaynaa in aan ku qanacsannahy xukunka Allah kuna kalsoonahay daaweynta iyo khibrada dhaqaatiirta Isbitaalka Taqasusiga ee Somali Sudanese Specialized Hospital.\n\n\nWaxan u fasaxnay bukaankan in lagu sameeyo qaliin, wax walba oo ku yimada bukaankaasna waan ku qanacsannahay xitaa haddu geeriyoodo.",
+   "fieldname": "text",
+   "fieldtype": "Text",
+   "read_only": 1
+  }
+ ],
+ "modified": "2021-06-25 16:31:40.251056",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Consent Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

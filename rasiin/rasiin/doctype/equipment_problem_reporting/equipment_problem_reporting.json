@@ -1,0 +1,80 @@
+{
+ "creation": "2021-05-16 13:00:06.892117",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "machine_name",
+  "tag_no",
+  "serial_number",
+  "the_problem",
+  "name_of_reporting_employee",
+  "department",
+  "room_number",
+  "erpnext_user"
+ ],
+ "fields": [
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "label": "Machine Name",
+   "options": "BME Asset Registration"
+  },
+  {
+   "columns": 2,
+   "fetch_from": "machine_name.tagnumber",
+   "fieldname": "tag_no",
+   "fieldtype": "Data",
+   "label": "Tag No"
+  },
+  {
+   "columns": 3,
+   "fieldname": "the_problem",
+   "fieldtype": "Small Text",
+   "label": "The Problem "
+  },
+  {
+   "columns": 4,
+   "fieldname": "name_of_reporting_employee",
+   "fieldtype": "Link",
+   "label": "Name of Reporting Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "label": "Room Number"
+  },
+  {
+   "default": "User",
+   "fieldname": "erpnext_user",
+   "fieldtype": "Data",
+   "label": "Current_user",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "machine_name.serial",
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "label": "Serial Number"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-06-25 16:38:42.422701",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Equipment Problem Reporting",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,35 @@
+{
+ "add_total_row": 1,
+ "creation": "2020-06-05 14:56:38.442426",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "SSSH",
+ "modified": "2021-06-25 15:41:04.438143",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Items To Be Requested Main Store",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n    tabBin.item_code as \"Item:Link/Item:120\",\n    `tabItem Reorder`.warehouse_reorder_qty ,\n     tabBin.stock_uom,\n    tabBin.warehouse as \"Warehouse:Link/Warehouse:120\",\n    'RequiredDate' = CURDATE() AS \"Date:data/Account:150\",\n    tabBin.actual_qty as \"Actual:Float:90\",\n    tabBin.indented_qty as \"Requested:Float:90\",\n    tabBin.ordered_qty as \"Ordered:Float:90\",\n    `tabItem Reorder`.warehouse_reorder_level \n   \nFROM\n    tabBin, tabItem, `tabItem Reorder`\nWHERE\n      tabBin.item_code = tabItem.item_code\n      and  tabBin.item_code = `tabItem Reorder`.parent\n     \n      and  tabBin.warehouse = `tabItem Reorder`.warehouse\n      and `tabItem Reorder`.warehouse = \"Main Drug Store - SSSH\"\n      and  tabBin.warehouse = \"Main Drug Store - SSSH\"\n      and  `tabItem Reorder`.warehouse_reorder_level  > tabBin.actual_qty \nORDER BY\n    tabBin.actual_qty ASC",
+ "ref_doctype": "Material Request",
+ "report_name": "Items To Be Requested Main Store",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Purchase Manager"
+  },
+  {
+   "role": "Stock Manager"
+  },
+  {
+   "role": "Stock User"
+  },
+  {
+   "role": "Purchase User"
+  }
+ ]
+}

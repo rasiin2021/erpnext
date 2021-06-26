@@ -1,0 +1,267 @@
+{
+ "autoname": "Bloodbank-.#####",
+ "creation": "2021-01-30 12:23:43.932394",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "donor_basic_info_section",
+  "donor_id",
+  "donor_full_name",
+  "age",
+  "mobile",
+  "gender_donor",
+  "column_break_6",
+  "region",
+  "district",
+  "blood_type",
+  "date_of_donation",
+  "section_break_11",
+  "column_break_12",
+  "donor_medical_info_section",
+  "viral_serology_result",
+  "section_break_15",
+  "column_break_16",
+  "recipient_info_section",
+  "patient",
+  "patient_name",
+  "patient_age",
+  "gender",
+  "column_break_22",
+  "patient_m",
+  "patient_r",
+  "patient_d",
+  "p_blood_type",
+  "section_break_28",
+  "date_taken",
+  "taken_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "donor_basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Donor Basic Info"
+  },
+  {
+   "fieldname": "donor_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Donor ID",
+   "options": "Patient",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "donor_id.patient_name",
+   "fieldname": "donor_full_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Donor Full Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "donor_id.age",
+   "fieldname": "age",
+   "fieldtype": "Data",
+   "label": "Age",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "donor_id.mobile",
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Mobile",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "donor_id.region",
+   "fieldname": "region",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Region",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "donor_id.district",
+   "fieldname": "district",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "District",
+   "read_only": 1
+  },
+  {
+   "fieldname": "blood_type",
+   "fieldtype": "Select",
+   "label": "Blood Type",
+   "options": "\nA RhD positive (A+)\nA RhD negative (A-)\nB RhD positive (B+)\nB RhD negative (B-)\nO RhD positive (O+)\nO RhD negative (O-)\nAB RhD positive (AB+)\nAB RhD negative (AB-)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_of_donation",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Donation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_11",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "donor_medical_info_section",
+   "fieldtype": "Section Break",
+   "label": "Donor Medical Info"
+  },
+  {
+   "fieldname": "viral_serology_result",
+   "fieldtype": "Select",
+   "label": "Viral Serology Result",
+   "options": "\nNegative\nPostive",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_15",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "recipient_info_section",
+   "fieldtype": "Section Break",
+   "label": "Recipient Info"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "patient",
+   "fieldtype": "Link",
+   "label": "Patient ",
+   "options": "Patient",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "patient.patient_name",
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Patient Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient.age",
+   "fieldname": "patient_age",
+   "fieldtype": "Data",
+   "label": "Age",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient.sex",
+   "fieldname": "gender",
+   "fieldtype": "Data",
+   "label": "Gender",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "patient.mobile",
+   "fieldname": "patient_m",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Mobile",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient.region",
+   "fieldname": "patient_r",
+   "fieldtype": "Data",
+   "label": "Region",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient.district",
+   "fieldname": "patient_d",
+   "fieldtype": "Data",
+   "label": "District",
+   "read_only": 1
+  },
+  {
+   "fieldname": "p_blood_type",
+   "fieldtype": "Select",
+   "label": "Blood Type",
+   "options": "\nA RhD positive (A+)\nA RhD negative (A-)\nB RhD positive (B+)\nB RhD negative (B-)\nO RhD positive (O+)\nO RhD negative (O-)\nAB RhD positive (AB+)\nAB RhD negative (AB-)",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "donor_id.sex",
+   "fieldname": "gender_donor",
+   "fieldtype": "Data",
+   "label": "Gender",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_28",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "date_taken",
+   "fieldtype": "Date",
+   "label": "Date Taken "
+  },
+  {
+   "fieldname": "taken_by",
+   "fieldtype": "Data",
+   "label": "Taken By"
+  }
+ ],
+ "modified": "2021-06-25 16:31:41.267157",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Blood bank",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Laboratory User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "patient_name",
+ "track_changes": 1
+}

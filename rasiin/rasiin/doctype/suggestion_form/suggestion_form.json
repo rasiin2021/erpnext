@@ -1,0 +1,70 @@
+{
+ "creation": "2021-01-20 16:32:30.096923",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sugggestion_date",
+  "suggestion_details",
+  "suggested_by",
+  "actionable",
+  "suggested_status",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "sugggestion_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Suggestion Date",
+   "print_width": "1",
+   "width": "1"
+  },
+  {
+   "fieldname": "suggestion_details",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Suggestion Details"
+  },
+  {
+   "fieldname": "suggested_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Suggested By"
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "actionable",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Actionable"
+  },
+  {
+   "columns": 1,
+   "fieldname": "suggested_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Suggestion Status",
+   "options": "\nSuggested\nReviewed\nDiscussed\nApproved\nImplemented\nDiscarded"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Remarks"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-06-25 16:06:11.376757",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Suggestion Form",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

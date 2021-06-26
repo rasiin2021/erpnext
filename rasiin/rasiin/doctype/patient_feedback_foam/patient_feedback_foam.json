@@ -1,0 +1,525 @@
+{
+ "allow_copy": 1,
+ "allow_import": 1,
+ "autoname": "PF-{practitioner}-.DD.YYYY",
+ "creation": "2020-04-23 15:56:27.409391",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "inpatient_record",
+  "patient",
+  "appointment_type",
+  "duration",
+  "insurance",
+  "insurance_company_name",
+  "insurance_approval_number",
+  "insurance_remarks",
+  "column_break_1",
+  "status",
+  "procedure_template",
+  "get_procedure_from_encounter",
+  "procedure_prescription",
+  "inpatient_record_procedure",
+  "radiology_procedure",
+  "radiology_procedure_prescription",
+  "get_radiology_from_encounter",
+  "modality_type",
+  "service_unit",
+  "modality",
+  "check_availability",
+  "self_appointment",
+  "section_break_12",
+  "practitioner",
+  "department",
+  "source",
+  "referring_practitioner",
+  "column_break_17",
+  "appointment_date",
+  "appointment_time",
+  "section_break_16",
+  "patient_name",
+  "patient_sex",
+  "column_break_21",
+  "patient_age",
+  "section_break_1",
+  "appointment_datetime",
+  "mode_of_payment",
+  "paid_amount",
+  "invoice_paid_amount",
+  "outstanding_amount",
+  "sales_invoice_id",
+  "make_payment",
+  "column_break_2",
+  "apply_discount_on",
+  "discount_by",
+  "discount_value",
+  "invoiced",
+  "company",
+  "section_break_3",
+  "notes",
+  "reminded",
+  "cancellation_details_section",
+  "cancellation_source",
+  "cancellation_reason",
+  "column_break_57",
+  "cancelled_by",
+  "cancellation_notes"
+ ],
+ "fields": [
+  {
+   "fetch_from": "patient.inpatient_record",
+   "fieldname": "inpatient_record",
+   "fieldtype": "Link",
+   "label": "Inpatient Record",
+   "options": "Inpatient Record",
+   "read_only": 1
+  },
+  {
+   "fieldname": "patient",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Patient",
+   "options": "Patient"
+  },
+  {
+   "fieldname": "appointment_type",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Appointment Type",
+   "options": "Appointment Type",
+   "read_only": 1
+  },
+  {
+   "description": "In Minutes",
+   "fieldname": "duration",
+   "fieldtype": "Int",
+   "in_filter": 1,
+   "label": "Duration"
+  },
+  {
+   "fieldname": "insurance",
+   "fieldtype": "Link",
+   "label": "Insurance ",
+   "options": "Insurance Assignment"
+  },
+  {
+   "fetch_from": "insurance.insurance_company_name",
+   "fieldname": "insurance_company_name",
+   "fieldtype": "Data",
+   "label": "Insurance Company Name",
+   "read_only": 1
+  },
+  {
+   "depends_on": "insurance",
+   "fieldname": "insurance_approval_number",
+   "fieldtype": "Data",
+   "label": "Insurance Approval Number"
+  },
+  {
+   "depends_on": "insurance",
+   "fieldname": "insurance_remarks",
+   "fieldtype": "Small Text",
+   "label": "Insurance Remarks"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break",
+   "read_only": 1
+  },
+  {
+   "default": "Scheduled",
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_filter": 1,
+   "label": "Status",
+   "options": "\nScheduled\nOpen\nIn Progress\nClosed\nPending\nCancelled\nConfirmed\nNo show\nArrived\nChecked out",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "depends_on": "eval: !doc.radiology_procedure",
+   "fieldname": "procedure_template",
+   "fieldtype": "Link",
+   "label": "Procedure",
+   "options": "Clinical Procedure Template"
+  },
+  {
+   "depends_on": "eval: !doc.radiology_procedure && doc.__islocal",
+   "fieldname": "get_procedure_from_encounter",
+   "fieldtype": "Button",
+   "label": "Get Ordered  Procedures"
+  },
+  {
+   "fieldname": "procedure_prescription",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Procedure Prescription",
+   "no_copy": 1,
+   "options": "Procedure Prescription",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "inpatient_record_procedure",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Inpatient Record Procedure",
+   "no_copy": 1,
+   "options": "Inpatient Record Procedure",
+   "print_hide": 1
+  },
+  {
+   "depends_on": "eval: !doc.procedure_template",
+   "fieldname": "radiology_procedure",
+   "fieldtype": "Link",
+   "label": "Radiology Procedure",
+   "options": "Radiology Procedure"
+  },
+  {
+   "fieldname": "radiology_procedure_prescription",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Radiology Procedure Prescription",
+   "options": "Radiology Procedure Prescription"
+  },
+  {
+   "depends_on": "eval: !doc.procedure_template && doc.__islocal",
+   "fieldname": "get_radiology_from_encounter",
+   "fieldtype": "Button",
+   "label": "Get Ordered Radiology Procedures"
+  },
+  {
+   "depends_on": "eval: !doc.procedure_template",
+   "fetch_from": "radiology_procedure.modality_type",
+   "fetch_if_empty": 1,
+   "fieldname": "modality_type",
+   "fieldtype": "Link",
+   "label": "Modality Type",
+   "options": "Modality Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "service_unit",
+   "fieldtype": "Link",
+   "label": "Service Unit",
+   "options": "Healthcare Service Unit"
+  },
+  {
+   "depends_on": "eval: doc.radiology_procedure && doc.modality_type",
+   "fetch_from": "service_unit.modality_name",
+   "fieldname": "modality",
+   "fieldtype": "Data",
+   "label": "Modality",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.__islocal",
+   "fieldname": "check_availability",
+   "fieldtype": "Button",
+   "label": "Check Availability and Book"
+  },
+  {
+   "depends_on": "eval:doc.__islocal",
+   "fieldname": "self_appointment",
+   "fieldtype": "Button",
+   "hidden": 1,
+   "label": "Book Appointment"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "practitioner",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Healthcare Practitioner",
+   "options": "Healthcare Practitioner",
+   "reqd": 1
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Department",
+   "options": "Medical Department",
+   "read_only": 1,
+   "search_index": 1,
+   "set_only_once": 1
+  },
+  {
+   "default": "Direct",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "\nDirect\nReferral\nExternal Referral",
+   "reqd": 1
+  },
+  {
+   "fieldname": "referring_practitioner",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "ignore_user_permissions": 1,
+   "label": "Referring Practitioner",
+   "options": "Healthcare Practitioner"
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "appointment_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "appointment_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_16",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "patient.patient_name",
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "label": "Patient Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient.sex",
+   "fieldname": "patient_sex",
+   "fieldtype": "Data",
+   "label": "Gender",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "column_break_21",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "patient_age",
+   "fieldtype": "Data",
+   "label": "Patient Age",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "appointment_datetime",
+   "fieldtype": "Datetime",
+   "hidden": 1,
+   "label": "Date TIme",
+   "print_hide": 1,
+   "report_hide": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Mode of Payment",
+   "options": "Mode of Payment"
+  },
+  {
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount"
+  },
+  {
+   "depends_on": "sales_invoice_id",
+   "fieldname": "invoice_paid_amount",
+   "fieldtype": "Currency",
+   "label": "Invoice Paid Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "label": "Outstanding Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sales_invoice_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Sales Invoice ID"
+  },
+  {
+   "depends_on": "eval:doc.outstanding_amount && doc.outstanding_amount > 0",
+   "fieldname": "make_payment",
+   "fieldtype": "Button",
+   "label": "Make Payment"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "apply_discount_on",
+   "fieldtype": "Select",
+   "label": "Apply Discount On",
+   "options": "Net Total\nGrand Total"
+  },
+  {
+   "fieldname": "discount_by",
+   "fieldtype": "Select",
+   "label": "Discount By",
+   "options": "Fixed Amount\nPercentage"
+  },
+  {
+   "fieldname": "discount_value",
+   "fieldtype": "Float",
+   "label": "Discount Value"
+  },
+  {
+   "default": "0",
+   "fieldname": "invoiced",
+   "fieldtype": "Check",
+   "label": "Invoiced",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "no_copy": 1,
+   "options": "Company",
+   "print_hide": 1,
+   "read_only": 1,
+   "report_hide": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break",
+   "label": "More Info"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "ignore_xss_filter": 1,
+   "label": "Notes"
+  },
+  {
+   "default": "0",
+   "fieldname": "reminded",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Reminded",
+   "print_hide": 1,
+   "report_hide": 1
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:doc.status==\"Cancelled\"",
+   "fieldname": "cancellation_details_section",
+   "fieldtype": "Section Break",
+   "label": "Cancellation Details"
+  },
+  {
+   "fieldname": "cancellation_source",
+   "fieldtype": "Select",
+   "label": "Cancellation Source",
+   "options": "Patient\nPractitioner\nFacility",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cancellation_reason",
+   "fieldtype": "Link",
+   "label": "Cancellation Reason",
+   "options": "Appointment Cancellation Reason",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_57",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cancelled_by",
+   "fieldtype": "Select",
+   "label": "Cancelled By",
+   "options": "Phone\nEmail",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cancellation_notes",
+   "fieldtype": "Small Text",
+   "label": "Cancellation Notes",
+   "read_only": 1
+  }
+ ],
+ "modified": "2021-06-25 16:12:37.599987",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Patient Feedback Foam",
+ "name_case": "UPPER CASE",
+ "owner": "eng.abdulfatah@ssshospital.so",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Healthcare Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Physician",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Nursing User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "restrict_to_domain": "Healthcare",
+ "search_fields": "patient, practitioner, department, appointment_date, appointment_time",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "patient_name",
+ "track_changes": 1,
+ "track_seen": 1
+}

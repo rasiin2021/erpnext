@@ -1,0 +1,77 @@
+{
+ "autoname": "IPCSC.###",
+ "creation": "2021-01-19 17:08:11.851565",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section",
+  "section_control_point",
+  "default_review_type"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "bold": 1,
+   "fieldname": "section",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Section"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "bold": 1,
+   "fieldname": "section_control_point",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Section Control Point"
+  },
+  {
+   "fieldname": "default_review_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Default Review Type",
+   "options": "SI\nRR\nOB"
+  }
+ ],
+ "modified": "2021-06-25 16:11:56.855870",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "IPC Section Checklist",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Healthcare Administrator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

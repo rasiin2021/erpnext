@@ -1,0 +1,204 @@
+{
+ "beta": 1,
+ "creation": "2021-02-01 20:40:19.051920",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "appointment",
+  "patient",
+  "patient_name",
+  "patient_age",
+  "patient_sex",
+  "medical_department",
+  "practitioner",
+  "healthcare_practitioner_name",
+  "secondary_practitioner",
+  "secondary_practitioner_name",
+  "source",
+  "referring_practitioner",
+  "column_break_7",
+  "notes",
+  "sb_investigations",
+  "investigations",
+  "status",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "appointment",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Appointment",
+   "options": "Patient Appointment",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "patient",
+   "fieldtype": "Link",
+   "label": "Patient",
+   "options": "Patient",
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fetch_from": "patient.patient_name",
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "label": "Patient Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "patient_age",
+   "fieldtype": "Data",
+   "label": "Age",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "patient_sex",
+   "fieldtype": "Data",
+   "label": "Gender",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "medical_department",
+   "fieldtype": "Link",
+   "label": "Medical Department",
+   "options": "Medical Department",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "practitioner",
+   "fieldtype": "Link",
+   "label": "Healthcare Practitioner",
+   "options": "Healthcare Practitioner",
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fetch_from": "practitioner.practitioner_name",
+   "fieldname": "healthcare_practitioner_name",
+   "fieldtype": "Data",
+   "label": "Healthcare Practitioner Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "secondary_practitioner",
+   "fieldtype": "Link",
+   "label": "Healthcare Practitioner(Secondary)",
+   "options": "Healthcare Practitioner"
+  },
+  {
+   "fetch_from": "secondary_practitioner.practitioner_name",
+   "fieldname": "secondary_practitioner_name",
+   "fieldtype": "Data",
+   "label": "Secondary Practitioner Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "\nDirect\nReferral\nExternal Referral",
+   "reqd": 1
+  },
+  {
+   "fieldname": "referring_practitioner",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Referring Practitioner",
+   "options": "Healthcare Practitioner"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes",
+   "set_only_once": 1
+  },
+  {
+   "collapsible": 1,
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "sb_investigations",
+   "fieldtype": "Section Break",
+   "label": "Investigations"
+  },
+  {
+   "fieldname": "investigations",
+   "fieldtype": "Table",
+   "label": "Investigations",
+   "options": "Clinical Procedure Lab Test"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "Draft\nIn Progress\nCompleted\nPending\nCancelled"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Referral Official Letter",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2021-06-25 16:06:11.541377",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Referral Official Letter",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Healthcare Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Nursing User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Healthcare Administrator",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "restrict_to_domain": "Healthcare",
+ "search_fields": "patient, patient_name, appointment",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "patient",
+ "track_changes": 1
+}

@@ -1,0 +1,172 @@
+{
+ "autoname": "naming_series:",
+ "creation": "2020-09-23 09:06:23.405720",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "brand",
+  "serial_number",
+  "location",
+  "branch",
+  "os_type",
+  "cpu",
+  "ram",
+  "hdd_storage_space",
+  "cdd",
+  "antivirus",
+  "type",
+  "condition",
+  "ip_address",
+  "office_program",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "brand",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Brand",
+   "options": "\nHP\nZkteco\nLENOVO\nTOSHIBA\nSAMSUNG\nLG\nTOSHIBA\nLENOVO\nMICROSOFT\nDELL\nX PRINT\nIBM\nRENO",
+   "reqd": 1
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Serial Number"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Location",
+   "options": "\nVIP1\nBOARD\nCXO\nCASHIER\nCOLLECTION\nCOVID-19\nCT-SCAN\nDELIVERY\nDENTAL\nDERMATOLOGY\nGENERAL SURGERY\nEMERGENCY-ADULT\nEMERGENCY-PEDATRIC\nENT\nFAMILY PLAN\nFEEDBACK OFFICE\nFINANCE OFFICE\nGENERAL DIRECTOR OFFICE\nGENERAL SURGERY\nGENERAL WARD\nGESTROLOGY\nHDU\nHRM OFFICE\nSSSI\nINTERNAL MEDICINE\nISOLATION\nLABORATORY\nMAIN-STORE\nMEETING HALL\nMEDICAL DIRECTOR OFFICE\nNEONATOLOGY\nNEOROLOGY\nOBS & GYN CLINIC\nOBS & GYN WARD\nOPERATOR OFFICE\nOPTHOMOLOGY\nORTHOPEDIC\nPEDATRIC\nPHARMACY\nR & D\nRECOVERY\nRESTAURANT\nULTRASOUND\nUROLOGY\nVACCINE OFFICE\nVIP2\nVIP3\nVITAL SIGN\nX-RAY\nHADWARE & NETWORK OFFICE\nInfection Control\nTele-Medicine\nBiomedical Engineer officer\nFacility Manager\nLogistic officer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "\nHQ\nLaba Dhagax\nBakaro\nAirport",
+   "reqd": 1
+  },
+  {
+   "fieldname": "os_type",
+   "fieldtype": "Select",
+   "label": "OS Type",
+   "options": "\nWindow\nLinux\nMacOs"
+  },
+  {
+   "fieldname": "cpu",
+   "fieldtype": "Data",
+   "label": "CPU"
+  },
+  {
+   "fieldname": "ram",
+   "fieldtype": "Data",
+   "label": "Ram"
+  },
+  {
+   "fieldname": "hdd_storage_space",
+   "fieldtype": "Data",
+   "label": "HDD Storage Space"
+  },
+  {
+   "fieldname": "cdd",
+   "fieldtype": "Select",
+   "label": "CDD",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "antivirus",
+   "fieldtype": "Data",
+   "label": "Antivirus"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nAll In One\nPC\nMonitor\nPrinter\nUPS\nRack\nServer\nSmart Screen\nQue System",
+   "reqd": 1
+  },
+  {
+   "fieldname": "condition",
+   "fieldtype": "Select",
+   "label": "Condition",
+   "options": "\nBrand\nSecond",
+   "reqd": 1
+  },
+  {
+   "fieldname": "office_program",
+   "fieldtype": "Select",
+   "label": "Office Program",
+   "options": "\nMicrosoft Office\nWPS\nKingston Office"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "CR-"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Computers Register",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "label": "IP Address"
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2021-06-25 16:31:43.778564",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Computers Register",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Healthcare Administrator",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "brand",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

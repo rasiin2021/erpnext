@@ -1,0 +1,39 @@
+{
+ "creation": "2020-12-30 19:21:10.152962",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "attendanees",
+  "present"
+ ],
+ "fields": [
+  {
+   "default": "Issak\nMuhyadin\nAli",
+   "fieldname": "attendanees",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Attendanees"
+  },
+  {
+   "default": "0",
+   "fieldname": "present",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Present"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-06-25 16:13:16.812926",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Multiple",
+ "nsm_parent_field": "parent_multible",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

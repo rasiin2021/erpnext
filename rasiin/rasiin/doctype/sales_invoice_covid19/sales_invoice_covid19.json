@@ -1,0 +1,130 @@
+{
+ "autoname": "naming_series:",
+ "creation": "2020-09-10 12:06:54.885073",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1",
+  "sales_invoice_id",
+  "title",
+  "naming_series",
+  "patient",
+  "patient_name",
+  "customer",
+  "mobile",
+  "customer_name",
+  "company",
+  "posting_date",
+  "lab_ref"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sales_invoice_id",
+   "fieldtype": "Link",
+   "label": "Sales Invoice ID",
+   "options": "Sales Invoice"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "ACC-SINV-.YYYY.-"
+  },
+  {
+   "fetch_from": "sales_invoice_id.patient",
+   "fieldname": "patient",
+   "fieldtype": "Link",
+   "label": "Patient",
+   "options": "Patient"
+  },
+  {
+   "fetch_from": "sales_invoice_id.patient_name",
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "label": "Patient Name"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "sales_invoice_id.mobile",
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile"
+  },
+  {
+   "fetch_from": "sales_invoice_id.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fetch_from": "sales_invoice_id.posting_date",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "lab_ref",
+   "fieldtype": "Data",
+   "label": "Lab Ref"
+  }
+ ],
+ "modified": "2021-06-25 16:18:24.902301",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Sales Invoice COVID19",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Cashiers Role",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

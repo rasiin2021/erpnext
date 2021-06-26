@@ -1,0 +1,35 @@
+{
+ "add_total_row": 1,
+ "creation": "2020-04-04 09:10:14.745764",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "SSSH",
+ "modified": "2021-06-25 16:55:18.838970",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Test One",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "select posting_date from `tabSales Invoice` \nwhere posting_date >= %(from_date)s\nand posting_date <= %(to_date)s\n",
+ "ref_doctype": "GL Entry",
+ "report_name": "Test One",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Auditor"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Cashiers Role"
+  }
+ ]
+}

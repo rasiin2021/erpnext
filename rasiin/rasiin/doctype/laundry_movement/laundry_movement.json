@@ -1,0 +1,69 @@
+{
+ "creation": "2021-02-26 17:05:52.438838",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "user",
+  "item",
+  "from_place",
+  "to_place",
+  "remark"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Data",
+   "label": "User"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Data",
+   "label": "Item"
+  },
+  {
+   "fieldname": "from_place",
+   "fieldtype": "Data",
+   "label": "From_place"
+  },
+  {
+   "fieldname": "to_place",
+   "fieldtype": "Data",
+   "label": "To_place"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Data",
+   "label": "Remark"
+  }
+ ],
+ "modified": "2021-06-25 16:06:12.030313",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Laundry Movement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

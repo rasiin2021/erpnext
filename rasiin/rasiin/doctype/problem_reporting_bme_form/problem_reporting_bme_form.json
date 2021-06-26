@@ -1,0 +1,164 @@
+{
+ "creation": "2021-05-16 16:14:49.586313",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date_and_time",
+  "equipment_problem_reporting",
+  "equipment_fixing_reporting_section",
+  "department",
+  "room_number",
+  "date",
+  "column_break_7",
+  "machine",
+  "sn",
+  "sssh_tag",
+  "column_break_11",
+  "section_break_12",
+  "error_description",
+  "problem_solution",
+  "remark",
+  "section_break_18",
+  "problem_solved",
+  "recommendation",
+  "list_of_spare_parts_needed",
+  "status_with_specific"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "error_description",
+   "fieldtype": "Small Text",
+   "label": "Error Description "
+  },
+  {
+   "fieldname": "equipment_problem_reporting",
+   "fieldtype": "Table",
+   "label": "Equipment Problem Reporting",
+   "options": "Equipment Problem Reporting"
+  },
+  {
+   "fieldname": "date_and_time",
+   "fieldtype": "Datetime",
+   "label": "Date and Time"
+  },
+  {
+   "fieldname": "equipment_fixing_reporting_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment Fixing Reporting "
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department "
+  },
+  {
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "label": "Room Number"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "machine",
+   "fieldtype": "Data",
+   "label": "Machine"
+  },
+  {
+   "fieldname": "sn",
+   "fieldtype": "Data",
+   "label": "SN"
+  },
+  {
+   "fieldname": "sssh_tag",
+   "fieldtype": "Data",
+   "label": "SSSH Tag"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "problem_solution",
+   "fieldtype": "Small Text",
+   "label": "Problem Solution "
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "label": "Remark"
+  },
+  {
+   "fieldname": "problem_solved",
+   "fieldtype": "Select",
+   "label": "Problem Solved",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "recommendation",
+   "fieldtype": "Small Text",
+   "label": "Recommendation"
+  },
+  {
+   "fieldname": "list_of_spare_parts_needed",
+   "fieldtype": "Long Text",
+   "label": "List Of Spare Parts Needed"
+  },
+  {
+   "fieldname": "status_with_specific",
+   "fieldtype": "Select",
+   "label": "Status with Specific ",
+   "options": "\nOutside\nClosed\nWIP\nHold"
+  },
+  {
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "modified": "2021-06-25 16:06:12.588364",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Problem Reporting BME Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Biomedical Role",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

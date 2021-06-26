@@ -1,0 +1,218 @@
+{
+ "allow_copy": 1,
+ "allow_import": 1,
+ "autoname": "naming_series:",
+ "beta": 1,
+ "creation": "2021-02-01 20:45:06.876417",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1",
+  "naming_series",
+  "source",
+  "patient",
+  "patient_name",
+  "patient_age",
+  "practitioner",
+  "referring_practitioner",
+  "encounter_date",
+  "encounter_time",
+  "diagnostics",
+  "remarks",
+  "codification",
+  "codification_table",
+  "sb_drug_prescription",
+  "drug_prescription",
+  "sb_test_prescription",
+  "lab_test_prescription",
+  "sb_procedures",
+  "procedure_prescription",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "REF-ENC-.YYYY.-",
+   "print_hide": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "patient",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "in_standard_filter": 1,
+   "label": "Patient",
+   "options": "Patient",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "patient.patient_name",
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "label": "Patient Name",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fetch_from": "patient.age",
+   "fieldname": "patient_age",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Age",
+   "read_only": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "practitioner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Healthcare Practitioner",
+   "options": "Healthcare Practitioner",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Refer to",
+   "options": "\nInternal\nExternal",
+   "reqd": 1
+  },
+  {
+   "depends_on": "source",
+   "fieldname": "referring_practitioner",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Referring Practitioner",
+   "options": "Healthcare Practitioner"
+  },
+  {
+   "default": "Today",
+   "fieldname": "encounter_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Refer Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "encounter_time",
+   "fieldtype": "Time",
+   "label": "Refer Time",
+   "reqd": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "codification",
+   "fieldtype": "Section Break",
+   "label": "Medical Coding"
+  },
+  {
+   "fieldname": "codification_table",
+   "fieldtype": "Table",
+   "label": "Medical Coding",
+   "options": "Codification Table"
+  },
+  {
+   "fieldname": "sb_drug_prescription",
+   "fieldtype": "Section Break",
+   "label": "Medication Orders"
+  },
+  {
+   "fieldname": "drug_prescription",
+   "fieldtype": "Table",
+   "label": "Medication",
+   "options": "Drug Prescription"
+  },
+  {
+   "fieldname": "sb_test_prescription",
+   "fieldtype": "Section Break",
+   "label": "Lab Orders"
+  },
+  {
+   "fieldname": "lab_test_prescription",
+   "fieldtype": "Table",
+   "label": "Investigations",
+   "options": "Lab Prescription"
+  },
+  {
+   "fieldname": "sb_procedures",
+   "fieldtype": "Section Break",
+   "label": "Procedure Orders"
+  },
+  {
+   "fieldname": "procedure_prescription",
+   "fieldtype": "Table",
+   "label": "Procedures",
+   "no_copy": 1,
+   "options": "Procedure Prescription"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Referral Letter",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "diagnostics",
+   "fieldtype": "Small Text",
+   "ignore_xss_filter": 1,
+   "label": "Diagnostics",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "ignore_xss_filter": 1,
+   "label": "Remarks",
+   "no_copy": 1
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2021-06-25 16:06:11.777369",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Referral Letter",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Physician",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "restrict_to_domain": "Healthcare",
+ "search_fields": "patient, patient_name, practitioner, encounter_date, encounter_time",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "patient_name",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

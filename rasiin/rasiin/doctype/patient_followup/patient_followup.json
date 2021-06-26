@@ -1,0 +1,128 @@
+{
+ "autoname": "PFH-.######",
+ "creation": "2020-07-20 16:18:22.537709",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "inpatient_record",
+  "patient",
+  "patient_id",
+  "patient_name",
+  "gender",
+  "mobile",
+  "status",
+  "department",
+  "date",
+  "pre_appointment_date",
+  "practitioner",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fetch_from": "patient.inpatient_record",
+   "fieldname": "inpatient_record",
+   "fieldtype": "Link",
+   "label": "Inpatient Record",
+   "options": "Inpatient Record"
+  },
+  {
+   "fieldname": "patient",
+   "fieldtype": "Link",
+   "label": "Appointment ID",
+   "options": "Patient Appointment"
+  },
+  {
+   "fetch_from": "patient.patient",
+   "fieldname": "patient_id",
+   "fieldtype": "Data",
+   "label": "Patient"
+  },
+  {
+   "fetch_from": "patient.patient_name",
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "label": "Patient Name"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Data",
+   "label": "Gender"
+  },
+  {
+   "fetch_from": "appointment.mobile",
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile"
+  },
+  {
+   "default": "Scheduled",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nScheduled\nOpen\nIn Progress\nClosed\nPending\nCancelled\nConfirmed\nNo show\nArrived\nChecked out",
+   "search_index": 1
+  },
+  {
+   "fetch_from": "patient.department",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department"
+  },
+  {
+   "default": "Now",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fetch_from": "patient.appointment_date",
+   "fieldname": "pre_appointment_date",
+   "fieldtype": "Date",
+   "label": "Pre Appointment Date"
+  },
+  {
+   "fetch_from": "patient.practitioner",
+   "fieldname": "practitioner",
+   "fieldtype": "Link",
+   "label": "Practitioner ",
+   "options": "Healthcare Practitioner"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Patient FollowUp",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2021-06-25 16:12:38.292565",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Patient FollowUp",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "patient_name",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

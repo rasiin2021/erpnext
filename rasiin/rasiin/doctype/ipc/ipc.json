@@ -1,0 +1,232 @@
+{
+ "autoname": "IPC-.hospital.-.#####",
+ "creation": "2021-01-19 17:14:25.116750",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "hospital",
+  "column_break_1",
+  "review_date",
+  "section_break_2",
+  "type_of_admissions",
+  "column_break_2",
+  "services_manager",
+  "section_break_4",
+  "number_of_nurse_clinicians_or_supervisory_staff",
+  "column_break_6",
+  "number_of_staff",
+  "section_break_8",
+  "number_of_staff_day_shift",
+  "column_break_10",
+  "number_of_staff_night_shift",
+  "section_break_12",
+  "number_of_single_beds",
+  "column_break_14",
+  "number_of_double_beds",
+  "column_break_16",
+  "number_of_triple_beds",
+  "column_break_18",
+  "number_of_quad_beds",
+  "section_break_20",
+  "number_of_admissions_per_month",
+  "column_break_22",
+  "section_break_24",
+  "column_break_25",
+  "get_checklist",
+  "section_break_27",
+  "ipc_detail",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "hospital",
+   "fieldtype": "Data",
+   "label": "Hospital"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "IPC",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "review_date",
+   "fieldtype": "Data",
+   "label": "Review Date"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "type_of_admissions",
+   "fieldtype": "Select",
+   "label": "Type of admissions",
+   "options": "Day Care\nSurgery\nClinical"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "services_manager",
+   "fieldtype": "Data",
+   "label": "Services Manager"
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "number_of_nurse_clinicians_or_supervisory_staff",
+   "fieldtype": "Int",
+   "label": "Number of Nurse Clinicians or Supervisory Staff"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "number_of_staff",
+   "fieldtype": "Int",
+   "label": "Number of staff"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "number_of_staff_day_shift",
+   "fieldtype": "Int",
+   "label": "Number of staff day shift"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "number_of_staff_night_shift",
+   "fieldtype": "Int",
+   "label": "Number of staff night shift"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "number_of_single_beds",
+   "fieldtype": "Int",
+   "label": "Number of Single Beds"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "number_of_double_beds",
+   "fieldtype": "Int",
+   "label": "Number of Double Beds"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "number_of_triple_beds",
+   "fieldtype": "Int",
+   "label": "Number of Triple Beds"
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "number_of_quad_beds",
+   "fieldtype": "Int",
+   "label": "Number of Quad Beds"
+  },
+  {
+   "fieldname": "section_break_20",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "number_of_admissions_per_month",
+   "fieldtype": "Int",
+   "label": "Number of Admissions per month"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_24",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_25",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "get_checklist",
+   "fieldtype": "Button",
+   "label": "Get Checklist"
+  },
+  {
+   "fieldname": "section_break_27",
+   "fieldtype": "Section Break"
+  },
+  {
+   "columns": 5,
+   "fieldname": "ipc_detail",
+   "fieldtype": "Table",
+   "label": "IPC Detail",
+   "options": "IPC Detail"
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2021-06-25 16:11:56.424199",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "IPC",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Healthcare Administrator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

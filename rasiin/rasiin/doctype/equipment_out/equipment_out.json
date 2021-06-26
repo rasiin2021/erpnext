@@ -1,0 +1,76 @@
+{
+ "creation": "2021-04-04 13:50:36.247146",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "machine_name",
+  "tag_no",
+  "serial_number",
+  "equipment_work_condition",
+  "reason_of_movement",
+  "name_of_taking_employee",
+  "taking_employee_check_sign"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Machine Name",
+   "options": "BME Asset Registration",
+   "print_width": "100px",
+   "reqd": 1,
+   "width": "100px"
+  },
+  {
+   "fieldname": "tag_no",
+   "fieldtype": "Data",
+   "label": "Tag No"
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "label": "Serial Number"
+  },
+  {
+   "fieldname": "reason_of_movement",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reason of Movement "
+  },
+  {
+   "fieldname": "name_of_taking_employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "ID of taking employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "name_of_taking_employee.employee_name",
+   "fieldname": "taking_employee_check_sign",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name of taking Employee",
+   "read_only": 1
+  },
+  {
+   "fieldname": "equipment_work_condition",
+   "fieldtype": "Select",
+   "label": "Equipment work Condition",
+   "options": "\nFunction\nNot Function\nBroken"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-06-25 16:38:41.865490",
+ "modified_by": "Administrator",
+ "module": "Rasiin",
+ "name": "Equipment Out",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
