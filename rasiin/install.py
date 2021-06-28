@@ -54,7 +54,10 @@ insert_after_map = {
 }
 
 property_setters = (
-	("Patient", "phone", "hidden", 0),
+	("Normal Test Result", "bold", "hidden", 1),
+	("Normal Test Result", "italic", "hidden", 1),
+	("Normal Test Result", "underline", "hidden", 1),
+	("Patient", "phone", "hidden", 1),
 )
 
 custom_fields = {
