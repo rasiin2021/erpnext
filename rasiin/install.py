@@ -34,6 +34,9 @@ def make_property_setters():
 			make_property_setter(doctype, fieldname, "is_custom_field", 1, "")
 			make_property_setter(doctype, fieldname, "insert_after", previous_field, "")
 
+	for property_setter in property_setters:
+		make_property_setter(*property_setter, "")
+
 	frappe.db.commit()
 
 insert_after_map = {
@@ -42,6 +45,10 @@ insert_after_map = {
 		'payments': 'total_qty'
 	}
 }
+
+property_setters = (
+	("Patient", "phone", "hidden", 0),
+)
 
 custom_fields = {
 	'Selling Settings': [
