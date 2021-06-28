@@ -35,7 +35,11 @@ def make_property_setters():
 			make_property_setter(doctype, fieldname, "insert_after", previous_field, "")
 
 	for property_setter in property_setters:
-		make_property_setter(*property_setter, "")
+		for_doctype = False
+		if not fieldname:
+			for_doctype = True
+
+		make_property_setter(*property_setter, "", for_doctype=for_doctype)
 
 	frappe.db.commit()
 
