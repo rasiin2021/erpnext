@@ -47,6 +47,9 @@ insert_after_map = {
 	'Sales Invoice': {
 		'customer_group': 'customer_name',
 		'payments': 'total_qty'
+	},
+	'Customer': {
+		'customer_group': 'address_html'
 	}
 }
 
