@@ -100,6 +100,11 @@ property_setters = (
 	("Procedure Prescription", "practitioner", "label", "Referral"),
 	("Procedure Prescription", "practitioner", "ignore_user_permissions", 1),
 	("Procedure Prescription", "comments", "in_list_view", 1),
+	("Healthcare Service Unit", None, "track_seen", 1),
+	("Healthcare Service Unit", None, "track_views", 1),
+	("Healthcare Service Unit Type", None, "track_changes", 1),
+	("Healthcare Service Unit Type", None, "track_seen", 1),
+	("Healthcare Service Unit Type", None, "track_views", 1),
 )
 
 custom_fields = {
@@ -227,6 +232,101 @@ custom_fields = {
 			"fieldtype": "Data",
 			"label": "item group",
 			"insert_after": "comments"
+		}
+	],
+	"Patient Encounter": [
+		{
+			"fieldname": "symptoms_txt",
+			"fieldtype": "Small Text",
+			"label": "Symptoms",
+			"insert_after": "symptoms",
+			"hidden": 1,
+		},
+		{
+			"fieldname": "diagnosis_txt",
+			"fieldtype": "Small Text",
+			"label": "Diagnosis",
+			"insert_after": "diagnosis",
+			"hidden": 1,
+		}
+	],
+	"Drug Prescription": [
+		{
+			"fieldname": "medical_department",
+			"fieldtype": "Link",
+			"label": "Department",
+			"options": "Medical Department",
+			"insert_after": "dosage_form",
+		},
+		{
+			"fetch_from": "drug_code.description",
+			"fieldname": "dosage_test",
+			"fieldtype": "Data",
+			"label": "Dosage Test",
+			"insert_after": "medical_department",
+		}
+	],
+	"Healthcare Practitioner": [
+		{
+			"fieldname": "abbr",
+			"fieldtype": "Data",
+			"label": "Abbr",
+		},
+	],
+	"Healthcare Settings": [
+		{
+			"default": "0",
+			"fieldname": "new_born",
+			"fieldtype": "Check",
+			"label": "Newborn"
+		},
+		{
+			"default": "Asc, Hooyo {{doc.patient_name}}, isbitaalka waxa uu kugu hambalyaynayaa {{doc.gender}} kuugu dhashay taariikhda: {{doc.baby_birth_date}}\nBaaraka Allah.",
+			"depends_on": "new_born",
+			"fieldname": "new_born_msg",
+			"fieldtype": "Small Text",
+			"label": "Newborn Message",
+			"insert_after": "new_born",
+		},
+		{
+			"default": "0",
+			"fieldname": "vaccine",
+			"fieldtype": "Check",
+			"label": "Vaccine",
+			"insert_after": "new_born_msg",
+		},
+		{
+			"default": "Asc,  {{doc.patient_name}}, Waxaa lagaaray xiligi talaalka:{{doc.douse_one_date}}  {{doc.douse_two_date}} {{doc.douse_three_date}} ee isbitaalka Somali Sudanese Specialized hospital.",
+			"depends_on": "vaccine",
+			"fieldname": "vaccine_msg",
+			"fieldtype": "Small Text",
+			"label": "Vaccine Message",
+			"insert_after": "vaccine",
+		},
+		{
+			"default": "0",
+			"fieldname": "nigh_shift_manager",
+			"fieldtype": "Check",
+			"label": "Nigh Shift Manager",
+			"insert_after": "vaccine_msg",
+		},
+		{
+			"default": "Asc, {{doc.patient_name}},Cawada waxad ku qorantahay Night shift sidaa lasoco, Mahadsanid.",
+			"depends_on": "nigh_shift_manager",
+			"fieldname": "nigh_shift_manager_message",
+			"fieldtype": "Small Text",
+			"label": "Nigh Shift Manager Message",
+			"insert_after": "nigh_shift_manager",
+		}
+	],
+	"Lab Prescription": [
+		{
+			"fetch_from": "department.visit_department",
+			"fieldname": "medical_department",
+			"fieldtype": "Link",
+			"label": "Department",
+			"options": "Medical Department",
+			"insert_after": "lab_test_name",
 		}
 	],
 }
