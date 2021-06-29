@@ -1,2 +1,2 @@
 import rasiin.monkey_patches.material_request_item
-# import rasiin.monkey_patches.patient_appointment
+import rasiin.monkey_patches.patient_appointment
