@@ -36,7 +36,7 @@ override_doctype_class = {
 }
 
 override_doctype_dashboards = {
-	"Patient": "rasiin.api.patient_appointment.get_data",
+	"Patient": "rasiin.api.patient_dashboard.get_data",
 	"Patient Appointment": "rasiin.api.patient_appointment_dashboard.get_data",
 }
 override_whitelisted_methods = {
