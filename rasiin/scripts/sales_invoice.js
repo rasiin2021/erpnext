@@ -47,7 +47,7 @@ var get_healthcare_services_to_invoice = function(frm) {
 		//Halkan waxan kudarnay Patient Encounter data
 		frappe.db.get_value(
 			"Patient Encounter",
-			dialog.get_value('encounter'),
+			encounter,
 			['healthcare_practitioner_name', 'visit_department', 'name'], function(r) {
 				if(!r) return;
 				dialog.set_values({
@@ -60,7 +60,6 @@ var get_healthcare_services_to_invoice = function(frm) {
 
 		//Halkan waxan kudarnay Parameter dheerad Si Encounter ID Marki lagaliyo oo usoo baxo Dalabka Quseeyo oo kaliya
 		var patient = dialog.fields_dict.patient.input.value;
-		var encounter = dialog.fields_dict.encounter.input.value;
 		if(patient && encounter && encounter!=selected_encounter){
 				selected_encounter = encounter;
 				var method = "erpnext.healthcare.utils.get_healthcare_services_to_invoice";
