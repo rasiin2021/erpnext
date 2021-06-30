@@ -1,9 +1,8 @@
 
-// Healthcare
 var get_healthcare_services_to_invoice = function(frm) {
 	var me = this;
 	let selected_patient = '';
-        let selected_encounter = '';
+	let selected_encounter = '';
 	var dialog = new frappe.ui.Dialog({
 		title: __("Get Items from Healthcare Services"),
 		fields:[
@@ -44,66 +43,52 @@ var get_healthcare_services_to_invoice = function(frm) {
 	});
 
 	dialog.fields_dict["encounter"].df.onchange = () => {
-		//Halkan waxan kudarnay Patient Encounter ID
-                frappe.db.get_value("Patient Encounter", dialog.get_value('encounter'), 'healthcare_practitioner_name', function(r) {
-                        if(r && r.healthcare_practitioner_name){
-                                console.log(r);
-                                dialog.set_values({
-                                        'practitioner_name': r.healthcare_practitioner_name
-                                });
-                        }
-                });
-
-		//Halkan waxan kudarnay Medical Department
-                 frappe.db.get_value("Patient Encounter", dialog.get_value('encounter'), 'visit_department', function(r) {
-                        if(r && r.visit_department){
-                                console.log(r);
-                                dialog.set_values({
-                                        'medical_department': r.visit_department
-                                });
-                        }
-                });
-
-		//Halkan waxan Patient Encounter ID in lageeyo Invoice-ka
-		frappe.db.get_value("Patient Encounter", dialog.get_value('encounter'), 'name', function(r) {
-    			if(r && r.name){
-				console.log(r);
+		const encounter = dialog.get_value('encounter');
+		//Halkan waxan kudarnay Patient Encounter data
+		frappe.db.get_value(
+			"Patient Encounter",
+			dialog.get_value('encounter'),
+			['healthcare_practitioner_name', 'visit_department', 'name'], function(r) {
+				if(!r) return;
 				dialog.set_values({
-					 'encounter_id': r.name
-        			});
-	        	}
+					'practitioner_name': r.healthcare_practitioner_name,
+					'medical_department': r.visit_department,
+					'encounter_id': r.name,
 				});
+			}
+		);
 
-               //Halkan waxan kudarnay Parameter dheerad Si Encounter ID Marki lagaliyo oo usoo baxo Dalabka Quseeyo oo kaliya
-	      var patient = dialog.fields_dict.patient.input.value;
-              var encounter = dialog.fields_dict.encounter.input.value;
-              if(patient && encounter && encounter!=selected_encounter){
-                      selected_encounter = encounter;
-                      var method = "erpnext.healthcare.utils.get_healthcare_services_to_invoice";
-                      var args = {patient: patient ,encounter: encounter};
-                      var columns = {"item_code": "Service", "medical_department": "Department", "encounter_date": "post Date", "item_name": "Item Name", "reference_dn": "Reference Name", "reference_dt": "Reference Type"};
-                      get_healthcare_items(frm, true, $results, $placeholder, method, args, columns);
-              }
-              else if(!patient || !encounter){
-                      selected_patient = '';
-		      selected_encounter = '';
-                      $results.empty();
-                      $results.append($placeholder);
-              }
-        }
+		//Halkan waxan kudarnay Parameter dheerad Si Encounter ID Marki lagaliyo oo usoo baxo Dalabka Quseeyo oo kaliya
+		var patient = dialog.fields_dict.patient.input.value;
+		var encounter = dialog.fields_dict.encounter.input.value;
+		if(patient && encounter && encounter!=selected_encounter){
+				selected_encounter = encounter;
+				var method = "erpnext.healthcare.utils.get_healthcare_services_to_invoice";
+				var args = {patient: patient ,encounter: encounter, company:frm.doc.company};
+				var columns = {"item_code": "Service", "medical_department": "Department", "encounter_date": "post Date", "item_name": "Item Name", "reference_dn": "Reference Name", "reference_dt": "Reference Type"};
+				get_healthcare_items(frm, true, $results, $placeholder, method, args, columns);
+		} else if(!patient || !encounter){
+			selected_patient = '';
+			selected_encounter = '';
+			$results.empty();
+			$results.append($placeholder);
+		}
+	}
 
 
-        dialog.fields_dict["patient"].df.onchange = () => {
-                frappe.db.get_value("Patient", dialog.get_value('patient'), 'patient_name', function(r) {
-                        if(r && r.patient_name){
-                                dialog.set_values({
-                                        'patient_name': r.patient_name
-                                });
-                        }
-                });
-        }
+	dialog.fields_dict["patient"].df.onchange = () => {
+			frappe.db.get_value("Patient", dialog.get_value('patient'), 'patient_name', function(r) {
+					if(r && r.patient_name){
+							dialog.set_values({
+									'patient_name': r.patient_name
+							});
+					}
+			});
+	}
+
 	$wrapper = dialog.fields_dict.results_area.$wrapper.append(`<div class="results"
 		style="border: 1px solid #d1d8dd; border-radius: 3px; height: 300px; overflow: auto;"></div>`);
+
 	$results = $wrapper.find('.results');
 	$placeholder = $(`<div class="multiselect-empty-state">
 				<span class="text-center" style="margin-top: -40px;">
