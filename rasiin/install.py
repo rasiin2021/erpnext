@@ -55,6 +55,7 @@ insert_after_map = {
 
 property_setters = (
 	("Lab Test", "result_date", "allow_on_submit", 1),
+	("Lab Test", "result_date", "read_only", 0),
 	("Normal Test Result", "result_value", "allow_on_submit", 1),
 	("Normal Test Result", "bold", "hidden", 1),
 	("Normal Test Result", "italic", "hidden", 1),
