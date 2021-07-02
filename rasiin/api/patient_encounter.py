@@ -17,6 +17,7 @@ def create_sales_orders(doc):
         table_maps = {
             "Patient Encounter": {
                 "doctype": "Sales Order",
+                "field_no_map": ["source"]
             },
         }
 
