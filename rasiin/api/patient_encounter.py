@@ -60,7 +60,7 @@ def update_item(source, target, source_parent):
 
     if not target.qty:
         target.qty = 1
-        if frappe.db.get_value("Item", source.drug_code, "stock_uom") in ("Nos", "Each"):
+        if frappe.db.get_value("Item", source.drug_code, "stock_uom") in ("Nos", "Each", "Pcs"):
             target.qty = source.get_quantity()
 
     if not target.description:
