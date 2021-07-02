@@ -69,6 +69,7 @@ property_setters = (
 	("Patient Encounter", "patient_age", "in_preview", 1),
 	("Patient Encounter", "patient_age", "in_standard_filter", 1),
 	("Patient Encounter", None, "track_views", 1),
+	("Patient Encounter", "sb_refs", "label", "References"),
 	("Employee", None, "track_seen", 1),
 	("Employee", None, "track_views", 1),
 	("Material Request Item", "item_code", "columns", 0),
@@ -108,6 +109,8 @@ property_setters = (
 	("Healthcare Service Unit Type", None, "track_changes", 1),
 	("Healthcare Service Unit Type", None, "track_seen", 1),
 	("Healthcare Service Unit Type", None, "track_views", 1),
+	("Sales Order", "po_no", "hidden", 1),
+	("Sales Invoice", "encounter_reference_id", "label", "Patient Encounter"),
 )
 
 custom_fields = {
@@ -251,6 +254,27 @@ custom_fields = {
 			"label": "Diagnosis",
 			"insert_after": "diagnosis",
 			"hidden": 1,
+		},
+		{
+			"fieldname": "medication_so",
+			"fieldtype": "Link",
+			"label": "Medication Sales Order",
+			"options": "Sales Order",
+			"read_only": 1,
+			"insert_after": "sb_refs"
+		},
+		{
+			"fieldname": "references_cb",
+			"fieldtype": "Column Break",
+			"insert_after": "amended_from"
+		},
+		{
+			"fieldname": "services_so",
+			"fieldtype": "Link",
+			"label": "Services Sales Order",
+			"options": "Sales Order",
+			"read_only": 1,
+			"insert_after": "references_cb"
 		}
 	],
 	"Drug Prescription": [
@@ -332,4 +356,109 @@ custom_fields = {
 			"insert_after": "lab_test_name",
 		}
 	],
+	"Sales Order": [
+		{
+			"fieldname": "patient",
+			"fieldtype": "Link",
+			"label": "Patient",
+			"options": "Patient",
+			"insert_after": "naming_series"
+		},
+		{
+			"fieldname": "patient_name",
+			"fieldtype": "Data",
+			"label": "Patient Name",
+			"fetch_from": "patient.patient_name",
+			"read_only": 1,
+			"translatable": 0,
+			"insert_after": "patient"
+		},
+		{
+			"fieldname": "inpatient_record",
+			"fieldtype": "Link",
+			"label": "Inpatient Record",
+			"options": "Inpatient Record",
+			"read_only": 1,
+			"insert_after": "patient_name"
+		},
+		{
+			"fieldname": "encounter_reference_id",
+			"fieldtype": "Link",
+			"label": "Patient Encounter",
+			"options": "Patient Encounter",
+			"read_only": 1,
+			"insert_after": "delivery_date",
+		},
+		{
+			"fieldname": "practitioner",
+			"fieldtype": "Link",
+			"label": "Practitioner",
+			"options": "Healthcare Practitioner",
+			"read_only": 1,
+			"insert_after": "encounter_reference_id",
+		},
+		{
+			"fieldname": "_accounting_dimensions_section",
+			"fieldtype": "Section Break",
+			"collapsible": 0,
+			"label": "Accounting Dimensions",
+			"insert_after": "tax_id"
+		},
+		{
+			"fieldname": "medical_department",
+			"label": "Medical Department",
+			"fieldtype": "Link",
+			"options": "Medical Department",
+			"insert_after": "_accounting_dimensions_section",
+			"translatable": 0
+		},
+		{
+			"fieldname": "accounting_dimensions_cb",
+			"fieldtype": "Column Break",
+			"insert_after": "medical_department",
+		},
+		{
+			"fieldname": "branch",
+			"label": "Branch",
+			"fieldtype": "Link",
+			"options": "Branch",
+			"insert_after": "accounting_dimensions_cb",
+			"translatable": 0
+		}
+	],
+	"Sales Order Item": [
+		{
+			"fieldname": "references_section_",
+			"fieldtype": "Section Break",
+			"label": "References",
+			"collapsible": 1,
+			"insert_after": "transaction_date"
+		},
+		{
+			"fieldname": "reference_dt",
+			"fieldtype": "Link",
+			"options": "DocType",
+			"label": "Reference DocType",
+			"insert_after": "references_section_"
+		},
+		{
+			"fieldname": "branch",
+			"fieldtype": "Link",
+			"label": "Branch",
+			"options": "Branch",
+			"insert_after": "reference_dt"
+		},
+		{
+			"fieldname": "references_cb",
+			"fieldtype": "Column Break",
+			"insert_after": "branch",
+		},
+		{
+			"fieldname": "reference_dn",
+			"fieldtype": "Dynamic Link",
+			"options": "reference_dt",
+			"label": "Reference Name",
+			"insert_after": "references_cb"
+		},
+	]
 }

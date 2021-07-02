@@ -28,6 +28,10 @@ doctype_list_js = {
 doc_events = {
 	"Sales Invoice": {
 		"validate": "rasiin.api.sales_invoice.validate_discount_level"
+	},
+	"Patient Encounter": {
+		"on_submit": "rasiin.api.patient_encounter.enqueue_sales_orders",
+		"on_update_after_submit": "rasiin.api.patient_encounter.enqueue_sales_orders"
 	}
 }
 
