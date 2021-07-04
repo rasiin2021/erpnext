@@ -13,11 +13,13 @@ def create_sales_orders(doc):
         if so_name:
             sales_order = frappe.get_doc("Sales Order", so_name)
             sales_order.items = []
+            if sales_order.docstatus > 1:
+                continue
 
         table_maps = {
             "Patient Encounter": {
                 "doctype": "Sales Order",
-                "field_no_map": ["source"]
+                "field_no_map": ["source", "docstatus"]
             },
         }
 
@@ -40,13 +42,16 @@ def create_sales_orders(doc):
             sales_order
         )
 
-        sales_order.customer = frappe.get_value("Patient", doc.patient, "customer")
+        sales_order.delivery_date = today()
+        sales_order.customer = frappe.db.get_value("Patient", doc.patient, "customer")
         if not sales_order.customer:
             frappe.throw("Please set a Customer linked to the Patient")
 
         sales_order.flags.ignore_validate_update_after_submit = 1
-        sales_order.delivery_date = today()
+        sales_order.flags.ignore_permissions = 1
+
         sales_order.save()
+        sales_order.submit()
 
         if so_name != sales_order.name:
             doc.db_set(so_type, sales_order.name)
