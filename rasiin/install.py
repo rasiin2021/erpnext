@@ -268,7 +268,7 @@ custom_fields = {
 		{
 			"fieldname": "references_cb",
 			"fieldtype": "Column Break",
-			"insert_after": "amended_from"
+			"insert_after": "medication_so"
 		},
 		{
 			"fieldname": "services_so",
