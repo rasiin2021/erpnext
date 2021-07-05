@@ -4,6 +4,12 @@ from frappe.utils import getdate
 from frappe.model.mapper import map_doc
 
 
+def set_so_values_from_db(doc, method=None):
+    for so_type in ("medication_so", "services_so"):
+        if not doc.get(so_type):
+            doc.set(so_type, doc.db_get(so_type))
+
+
 def enqueue_sales_orders(doc, method=None):
     frappe.enqueue(create_sales_orders, doc=doc)
 
@@ -58,7 +64,7 @@ def create_sales_orders(doc):
             if not sales_order.items:
                 sales_order.reload()
                 sales_order.cancel()
-                doc.db_set(so_type, "", notify=True)
+                doc.db_set(so_type, "", update_modified=False, notify=True)
                 continue
 
             sales_order.db_set("docstatus", 0, update_modified=False)
@@ -67,7 +73,7 @@ def create_sales_orders(doc):
         sales_order.submit()
 
         if so_name != sales_order.name:
-            doc.db_set(so_type, sales_order.name, notify=True)
+            doc.db_set(so_type, sales_order.name, update_modified=False, notify=True)
 
 
 def add_drug_items(so, doc):
