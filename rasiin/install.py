@@ -261,6 +261,7 @@ custom_fields = {
 			"label": "Medication Sales Order",
 			"options": "Sales Order",
 			"read_only": 1,
+			"no_copy": 1,
 			"insert_after": "sb_refs"
 		},
 		{
@@ -274,6 +275,7 @@ custom_fields = {
 			"label": "Services Sales Order",
 			"options": "Sales Order",
 			"read_only": 1,
+			"no_copy": 1,
 			"insert_after": "references_cb"
 		}
 	],
