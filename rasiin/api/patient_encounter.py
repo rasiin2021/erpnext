@@ -58,7 +58,7 @@ def create_sales_orders(doc):
             if not sales_order.items:
                 sales_order.reload()
                 sales_order.cancel()
-                doc.db_set(so_type, "", update_modified=False)
+                doc.db_set(so_type, "", notify=True)
                 continue
 
             sales_order.db_set("docstatus", 0, update_modified=False)
@@ -67,7 +67,7 @@ def create_sales_orders(doc):
         sales_order.submit()
 
         if so_name != sales_order.name:
-            doc.db_set(so_type, sales_order.name, update_modified=False)
+            doc.db_set(so_type, sales_order.name, notify=True)
 
 
 def add_drug_items(so, doc):
