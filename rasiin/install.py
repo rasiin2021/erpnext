@@ -262,6 +262,7 @@ custom_fields = {
 			"options": "Sales Order",
 			"read_only": 1,
 			"no_copy": 1,
+			"allow_on_submit": 1,
 			"insert_after": "sb_refs"
 		},
 		{
@@ -276,6 +277,7 @@ custom_fields = {
 			"options": "Sales Order",
 			"read_only": 1,
 			"no_copy": 1,
+			"allow_on_submit": 1,
 			"insert_after": "references_cb"
 		}
 	],
