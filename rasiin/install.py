@@ -247,7 +247,7 @@ custom_fields = {
 			"options": "Branch",
 			"label": "Branch",
 			"insert_after": "department",
-			""
+			"translatable": 0
 		},
 		{
 			"fieldname": "practitioner_charge",
