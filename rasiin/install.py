@@ -247,6 +247,7 @@ custom_fields = {
 			"options": "Branch",
 			"label": "Branch",
 			"insert_after": "department",
+			""
 		},
 		{
 			"fieldname": "practitioner_charge",
@@ -254,6 +255,7 @@ custom_fields = {
 			"label": "Practitioner Charge",
 			"insert_after": "column_break_2",
 			"read_only": 1,
+			"translatable": 0
 		},
 		{
 			"fieldname": "discount_percentage",
@@ -261,6 +263,7 @@ custom_fields = {
 			"label": "Discount Percentage",
 			"insert_after": "practitioner_charge",
 			"read_only_depends_on": "ref_sales_invoice",
+			"translatable": 0
 		},
 		{
 			"fieldname": "discount_amount",
@@ -268,6 +271,7 @@ custom_fields = {
 			"label": "Discount Amount",
 			"insert_after": "discount_percentage",
 			"read_only_depends_on": "ref_sales_invoice",
+			"translatable": 0
 		},
 		{
 			"fieldname": "payable_amount",
@@ -275,6 +279,7 @@ custom_fields = {
 			"label": "Amount Payable",
 			"insert_after": "discount_amount",
 			"read_only": 1,
+			"translatable": 0
 		},
 	],
 	"Patient Encounter": [
