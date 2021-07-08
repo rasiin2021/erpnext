@@ -1,1 +1,1 @@
-execute:from rasiin.install import after_install; after_install() # 20
+execute:from rasiin.install import after_install; after_install() # 21

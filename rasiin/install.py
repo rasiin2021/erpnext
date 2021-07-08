@@ -240,6 +240,43 @@ custom_fields = {
 			"insert_after": "comments"
 		}
 	],
+	"Patient Appointment": [
+		{
+			"fieldname": "branch",
+			"fieldtype": "Link",
+			"options": "Branch",
+			"label": "Branch",
+			"insert_after": "department",
+		},
+		{
+			"fieldname": "practitioner_charge",
+			"fieldtype": "Currency",
+			"label": "Practitioner Charge",
+			"insert_after": "column_break_2",
+			"read_only": 1,
+		},
+		{
+			"fieldname": "discount_percentage",
+			"fieldtype": "Percent",
+			"label": "Discount Percentage",
+			"insert_after": "practitioner_charge",
+			"read_only_depends_on": "ref_sales_invoice",
+		},
+		{
+			"fieldname": "discount_amount",
+			"fieldtype": "Currency",
+			"label": "Discount Amount",
+			"insert_after": "discount_percentage",
+			"read_only_depends_on": "ref_sales_invoice",
+		},
+		{
+			"fieldname": "payable_amount",
+			"fieldtype": "Currency",
+			"label": "Amount Payable",
+			"insert_after": "discount_amount",
+			"read_only": 1,
+		},
+	],
 	"Patient Encounter": [
 		{
 			"fieldname": "symptoms_txt",

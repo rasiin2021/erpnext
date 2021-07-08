@@ -17,7 +17,8 @@ app_include_js = "/assets/js/rasiin.min.js"
 doctype_js = {
 	"Sales Invoice": "scripts/sales_invoice.js",
 	"Material Request": "scripts/material_request.js",
-	"Lab Test": "scripts/lab_test.js"
+	"Lab Test": "scripts/lab_test.js",
+	"Patient Appointment": "scripts/patient_appointment.js",
 }
 
 doctype_list_js = {
@@ -29,6 +30,9 @@ doc_events = {
 	"Sales Invoice": {
 		"validate": "rasiin.api.sales_invoice.validate_discount_level"
 	},
+	"Patient Appointment": {
+		"validate": "rasiin.api.patient_appointment.validate_amounts"
+  },
 	"Patient Encounter": {
 		"before_validate": "rasiin.api.patient_encounter.set_so_values_from_db",
 		"on_update": "rasiin.api.patient_encounter.enqueue_sales_orders",
