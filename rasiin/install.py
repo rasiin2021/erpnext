@@ -25,7 +25,7 @@ def make_custom_roles():
 
 
 def make_custom_fields():
-	create_custom_fields(custom_fields)
+	create_custom_fields(custom_fields, ignore_validate=True)
 	frappe.db.commit()
 
 def make_property_setters():
