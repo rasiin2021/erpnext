@@ -42,10 +42,12 @@ def create_sales_orders(doc):
 
         if so_type == "medication_so":
             add_drug_items(sales_order, doc)
+            sales_order.so_type = "Pharmacy"
 
         elif so_type == "services_so":
             add_visit_charge(sales_order, doc)
             add_service_items(sales_order, doc)
+            sales_order.so_type = "Services"
 
         sales_order.items = [
             row
