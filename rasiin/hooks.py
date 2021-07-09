@@ -50,7 +50,7 @@ override_doctype_dashboards = {
 }
 override_whitelisted_methods = {
     "frappe.desk.query_report.get_script.": "rasiin.override.query_report.get_script",
-    "erpnext.healthcare.doctype.patient_appointment.patient_appointment": (
+    "erpnext.healthcare.doctype.patient_appointment.patient_appointment.check_payment_fields_reqd": (
         "rasiin.api.patient_appointment.check_payment_fields_reqd"
     ),
 }
