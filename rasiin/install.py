@@ -78,7 +78,6 @@ property_setters = (
     ("Normal Test Result", "underline", "hidden", 1),
     ("Patient", "phone", "hidden", 1),
     ("Stock Entry", "purpose", "options", "Material Issue"),
-    ("Patient Appointment", "status", "read_only", 0),
     ("Patient Encounter", "patient_age", "allow_in_quick_entry", 1),
     ("Patient Encounter", "patient_age", "in_list_view", 1),
     ("Patient Encounter", "patient_age", "in_global_search", 1),
