@@ -1,9 +1,26 @@
 import frappe
+from erpnext.healthcare.doctype.patient_appointment.patient_appointment import (
+    check_payment_fields_reqd,
+)
+
 
 def validate_amounts(doc, method):
-	if doc.payable_amount > doc.practitioner_charge:
-		frappe.throw('Payable Amount cannot be greater than Practitioner Charger')
+    if doc.payable_amount > doc.practitioner_charge:
+        frappe.throw("Payable Amount cannot be greater than Practitioner Charger")
 
-	if doc.paid_amount > doc.payable_amount or doc.paid_amount > doc.practitioner_charge:
-		frappe.throw('Amount Paid cannot be greater than Payable Amount')
+    if (
+        doc.paid_amount > doc.payable_amount
+        or doc.paid_amount > doc.practitioner_charge
+    ):
+        frappe.throw("Amount Paid cannot be greater than Payable Amount")
 
+
+@frappe.whitelist()
+def check_payment_fields_reqd(*args, **kwargs):
+    result = check_payment_fields_reqd(*args, **kwargs)
+    if not result and frappe.db.get_single_value(
+        "Healthcare Settings", "automate_appointment_invoicing"
+    ):
+        return True
+
+    return result
