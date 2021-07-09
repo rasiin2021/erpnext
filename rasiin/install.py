@@ -9,6 +9,19 @@ def after_install():
     make_custom_roles()
     make_custom_fields()
     make_property_setters()
+    create_so_types()
+
+
+def create_so_types():
+    for so_type in ("Pharmacy", "Services"):
+        if frappe.db.exists("SO Type", so_type):
+            continue
+
+        doc = frappe.new_doc("SO Type")
+        doc.so_type = so_type
+        doc.insert()
+
+    frappe.db.commit()
 
 
 def make_custom_roles():
@@ -443,11 +456,12 @@ custom_fields = {
         },
         {
             "fieldname": "so_type",
-            "fieldtype": "Select",
+            "fieldtype": "Link",
             "label": "Sales Order Type",
-            "options": "\nPharmacy\nServices",
+            "options": "SO Type",
             "insert_after": "order_type",
             "translatable": 0,
+            "reqd": 1,
         },
         {
             "fieldname": "encounter_reference_id",
