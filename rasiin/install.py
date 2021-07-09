@@ -149,24 +149,6 @@ custom_fields = {
     ],
     "Sales Invoice Item": [
         {
-            "fieldname": "insurance_claim_coverage",
-            "fieldtype": "Percent",
-            "label": "Insurance Claim Coverage",
-            "insert_after": "amount",
-        },
-        {
-            "fieldname": "insurance_claim_amount",
-            "fieldtype": "Currency",
-            "label": "Insurance Claim Amount",
-            "insert_after": "insurance_claim_coverage",
-        },
-        {
-            "fieldname": "insurance_approval_number",
-            "fieldtype": "Data",
-            "label": "Insurance Approval Number",
-            "insert_after": "insurance_claim_amount",
-        },
-        {
             "fieldname": "reference_dt",
             "fieldtype": "Link",
             "label": "Reference DocType",
