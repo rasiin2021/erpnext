@@ -1,6 +1,6 @@
 import frappe
 from erpnext.healthcare.doctype.patient_appointment.patient_appointment import (
-    check_payment_fields_reqd,
+    check_payment_fields_reqd
 )
 
 
@@ -16,7 +16,7 @@ def validate_amounts(doc, method):
 
 
 @frappe.whitelist()
-def check_payment_fields_reqd(*args, **kwargs):
+def custom_check_payment_fields_reqd(*args, **kwargs):
     result = check_payment_fields_reqd(*args, **kwargs)
     if not result and frappe.db.get_single_value(
         "Healthcare Settings", "automate_appointment_invoicing"
