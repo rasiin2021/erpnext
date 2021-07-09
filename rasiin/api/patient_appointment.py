@@ -16,8 +16,8 @@ def validate_amounts(doc, method):
 
 
 @frappe.whitelist()
-def custom_check_payment_fields_reqd(*args, **kwargs):
-    result = check_payment_fields_reqd(*args, **kwargs)
+def custom_check_payment_fields_reqd(patient):
+    result = check_payment_fields_reqd(patient)
     if not result and frappe.db.get_single_value(
         "Healthcare Settings", "automate_appointment_invoicing"
     ):
