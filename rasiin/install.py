@@ -13,6 +13,8 @@ def after_install():
 
 
 def create_so_types():
+    frappe.reload_doc("rasiin", "doctype", "so_type")
+
     for so_type in ("Pharmacy", "Services"):
         if frappe.db.exists("SO Type", so_type):
             continue
