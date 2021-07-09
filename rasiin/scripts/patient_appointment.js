@@ -18,6 +18,47 @@ frappe.ui.form.on("Patient Appointment", {
             });
         }
     },
+    refresh(frm) {
+        if (!frm.is_new()) return;
+
+        frm.page.set_primary_action(__('Check Availability'), function() {
+            if (!frm.doc.patient) {
+                frappe.msgprint({
+                    title: __('Not Allowed'),
+                    message: __('Please select Patient first'),
+                    indicator: 'red'
+                });
+            } else {
+                frappe.call({
+                    method: 'erpnext.healthcare.doctype.patient_appointment.patient_appointment.check_payment_fields_reqd',
+                    args: {'patient': frm.doc.patient},
+                    callback: function(data) {
+                        if (data.message == true) {
+                            if (frm.doc.mode_of_payment && frm.doc.paid_amount !== undefined) {
+                                check_and_set_availability(frm);
+                            }
+                            if (!frm.doc.mode_of_payment) {
+                                frappe.msgprint({
+                                    title: __('Not Allowed'),
+                                    message: __('Please select a Mode of Payment first'),
+                                    indicator: 'red'
+                                });
+                            }
+                            if (frm.doc.paid_amount === undefined) {
+                                frappe.msgprint({
+                                    title: __('Not Allowed'),
+                                    message: __('Please set the Paid Amount first'),
+                                    indicator: 'red'
+                                });
+                            }
+                        } else {
+                            check_and_set_availability(frm);
+                        }
+                    }
+                });
+            }
+        });
+    },
     practitioner_charge(frm) {
         calculate_discount(frm, 'practitioner_charge')
     },
