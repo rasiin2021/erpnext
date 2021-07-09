@@ -31,8 +31,8 @@ def make_custom_fields():
 def make_property_setters():
     for doctype, fields in insert_after_map.items():
         for fieldname, previous_field in fields.items():
-            make_property_setter(doctype, fieldname, "is_custom_field", 1, "")
             make_property_setter(doctype, fieldname, "insert_after", previous_field, "")
+            make_property_setter(doctype, fieldname, "is_custom_field", 1, "")
 
     for property_setter in property_setters:
         for_doctype = False
