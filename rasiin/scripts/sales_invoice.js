@@ -1,3 +1,29 @@
+frappe.ui.form.on("Sales Invoice", {
+  async paid_amount(frm) {
+    await frm.set_value("write_off_amount", 0);
+    if (flt(frm.doc.paid_amount) <= flt(frm.doc.grand_total)) return;
+
+    const payments_length = frm.doc.payments && frm.doc.payments.length;
+    if (payments_length) {
+      const row = frm.doc.payments[payments_length - 1];
+      frappe.model.set_value(row.doctype, row.name, "amount", 0);
+    }
+
+    frappe.validated = false;
+
+    frappe.throw(
+      `Paid amount <strong>
+      (${format_currency(frm.doc.paid_amount, frm.doc.currency)})
+      </strong> cannot be greater than Grand Total <strong>
+      (${format_currency(frm.doc.grand_total, frm.doc.currency)})
+      </strong>`
+    );
+  },
+
+  validate(frm) {
+    frm.trigger("paid_amount");
+  },
+});
 
 // var get_healthcare_services_to_invoice = function(frm) {
 // 	var me = this;
@@ -73,7 +99,6 @@
 // 			$results.append($placeholder);
 // 		}
 // 	}
-
 
 // 	dialog.fields_dict["patient"].df.onchange = () => {
 // 			frappe.db.get_value("Patient", dialog.get_value('patient'), 'patient_name', function(r) {
@@ -198,7 +223,6 @@
 // 			}
 // 		});
 
-
 // 		 frappe.db.get_value("Patient Encounter", dialog.get_value('encounter'), 'visit_department', function(r) {
 //                         if(r && r.visit_department){
 //                                 console.log(r);
@@ -216,8 +240,6 @@
 // 															 });
 // 											 }
 // 								});
-
-
 
 // 		var encounter = dialog.fields_dict.encounter.input.value;
 // 		if(encounter && encounter!=selected_encounter){

@@ -128,6 +128,8 @@ property_setters = (
     ("Sales Order", "po_no", "hidden", 1),
     ("Sales Order", "order_type", "hidden", 1),
     ("Sales Invoice", "encounter_reference_id", "label", "Patient Encounter"),
+    ("Sales Invoice", "section_break_88", "hidden", 1),
+    ("Sales Invoice", "column_break4", "hidden", 1),
 )
 
 custom_fields = {
@@ -421,6 +423,7 @@ custom_fields = {
             "fieldtype": "Link",
             "label": "Patient",
             "options": "Patient",
+            "translatable": 0,
             "insert_after": "naming_series",
         },
         {
