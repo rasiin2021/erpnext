@@ -5,8 +5,30 @@ frappe.ui.form.on("Sales Invoice", {
 
     const payments_length = frm.doc.payments && frm.doc.payments.length;
     if (payments_length) {
-      const row = frm.doc.payments[payments_length - 1];
-      frappe.model.set_value(row.doctype, row.name, "amount", 0);
+      const sum = frm.doc.payments
+        .slice(0, -1)
+        .reduce((a, b) => a + (b.amount || 0), 0);
+      if (sum <= frm.doc.grand_total) {
+        const row = frm.doc.payments[payments_length - 1];
+        frappe.model.set_value(
+          row.doctype,
+          row.name,
+          "amount",
+          flt(frm.doc.grand_total - sum)
+        );
+      } else {
+        for (const row of frm.doc.payments) {
+          row.amount = 0;
+        }
+
+        const first_row = frm.doc.payments[0];
+        frappe.model.set_value(
+          first_row.doctype,
+          first_row.name,
+          "amount",
+          frm.doc.grand_total
+        );
+      }
     }
 
     frappe.validated = false;
