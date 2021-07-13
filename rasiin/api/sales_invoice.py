@@ -36,7 +36,7 @@ def validate_discount_level(doc, method=None):
 
 
 def validate_paid_amount(doc, method=None):
-    if self.is_return or not self.is_pos or self.docstatus:
+    if doc.is_return or not doc.is_pos or doc.docstatus:
         return
 
     def get_currency_display(fieldname):
