@@ -13,7 +13,7 @@ def create_sales_invoice(appointment_doc):
     sales_invoice = frappe.new_doc("Sales Invoice")
     sales_invoice.patient = appointment_doc.patient
     sales_invoice.update(
-        frappe.get_value(
+        frappe.db.get_value(
             "Patient",
             appointment_doc.patient,
             ("customer", "inpatient_record"),
