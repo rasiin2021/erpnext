@@ -532,4 +532,26 @@ custom_fields = {
             "insert_after": "references_cb",
         },
     ],
+    "Patient": [
+        {
+            "fieldname": "collect_registration_fee",
+            "fieldtype": "Check",
+            "default": "1",
+            "label": "Collect Registration Fee",
+            "insert_after": "phone",
+            "depends_on": "eval: doc.__islocal",
+            "allow_in_quick_entry": 1,
+        },
+        {
+            "fieldname": "mode_of_payment",
+            "fieldtype": "Link",
+            "options": "Mode of Payment",
+            "label": "Mode of Payment",
+            "insert_after": "collect_registration_fee",
+            "allow_in_quick_entry": 1,
+            "depends_on": "eval: doc.__islocal && doc.collect_registration_fee",
+            "mandatory_depends_on": "eval: doc.collect_registration_fee",
+            "translatable": 0,
+        },
+    ],
 }
