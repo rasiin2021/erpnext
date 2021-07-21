@@ -29,7 +29,6 @@ def invoice_registration(doc, method=None):
 
 @frappe.whitelist()
 def get_mode_of_payment():
-    return
     company = frappe.defaults.get_user_default("company") or frappe.db.get_single_value(
         "Global Defaults", "default_company"
     )
