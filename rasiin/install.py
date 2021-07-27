@@ -51,7 +51,7 @@ def make_property_setters():
 
     for property_setter in property_setters:
         for_doctype = False
-        if not fieldname:
+        if not property_setter[1]:
             for_doctype = True
 
         make_property_setter(*property_setter, "", for_doctype=for_doctype)
