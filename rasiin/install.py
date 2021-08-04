@@ -133,6 +133,7 @@ property_setters = (
     ("Sales Order", "order_type", "hidden", 1, "Check"),
     ("Sales Invoice", "encounter_reference_id", "label", "Patient Encounter"),
     ("Sales Invoice", "section_break_88", "hidden", 1, "Check"),
+    ("Sales Invoice", "column_break4", "collapsible", 0, "Check"),
     ("Sales Invoice", "section_break_49", "depends_on", "eval:doc.discount_amount"),
 )
 
