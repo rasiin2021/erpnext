@@ -3,17 +3,17 @@ from frappe.utils import flt
 
 
 def validate_discount_level(doc, method=None):
-    discount_levels = {
-        row.role: flt(row.discount_allowed)
-        for row in frappe.get_all("Discount Level", fields=("role", "discount_allowed"))
-    }
+    if doc.discount_amount > 0:
+        frappe.throw("Discount Amount is not allowed, please set Write Off Amount instead")
+
+    discount_levels = get_discount_levels()
 
     if not discount_levels:
         return
 
     current_discount = (
         flt(
-            flt(doc.discount_amount)
+            flt(doc.write_off_amount)
             / (flt(doc.total) + flt(doc.total_taxes_and_charges)),
             5,
         )
@@ -33,6 +33,13 @@ def validate_discount_level(doc, method=None):
                 "{}% of Grand Total Before Discount".format(discount_allowed)
             )
         break
+
+
+def get_discount_levels():
+    return {
+        row.role: flt(row.discount_allowed)
+        for row in frappe.get_all("Discount Level", fields=("role", "discount_allowed"))
+    }
 
 
 def validate_paid_amount(doc, method=None):

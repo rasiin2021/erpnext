@@ -1,53 +1,92 @@
 frappe.ui.form.on("Sales Invoice", {
-  async paid_amount(frm) {
-    if (frm.doc.is_return || !frm.doc.is_pos || frm.doc.docstatus) return;
+	write_off_percentage(frm) {
+		frm.set_value('write_off_amount',
+			flt(
+				(flt(frm.doc.total) + flt(frm.doc.total_taxes_and_charges))
+				* flt(frm.doc.write_off_percentage) / 100, 4
+			)
+		);
+	},
 
-    await frm.set_value("write_off_amount", 0);
-    if (flt(frm.doc.paid_amount) <= flt(frm.doc.grand_total)) return;
+	write_off_amount(frm) {
+		const write_off_percentage = flt(
+			flt(frm.doc.write_off_amount) /
+			(flt(frm.doc.total) + flt(frm.doc.total_taxes_and_charges)), 4
+		) * 100;
 
-    const payments_length = frm.doc.payments && frm.doc.payments.length;
-    if (payments_length) {
-      const sum = frm.doc.payments
-        .slice(0, -1)
-        .reduce((a, b) => a + (b.amount || 0), 0);
-      if (sum <= frm.doc.grand_total) {
-        const row = frm.doc.payments[payments_length - 1];
-        frappe.model.set_value(
-          row.doctype,
-          row.name,
-          "amount",
-          flt(frm.doc.grand_total - sum)
-        );
-      } else {
-        for (const row of frm.doc.payments) {
-          row.amount = 0;
-        }
+		validate_discount_level(frm, write_off_percentage);
+		frm.doc.write_off_percentage = write_off_percentage;
+		frm.refresh_field('write_off_percentage');
+	},
 
-        const first_row = frm.doc.payments[0];
-        frappe.model.set_value(
-          first_row.doctype,
-          first_row.name,
-          "amount",
-          frm.doc.grand_total
-        );
-      }
-    }
+	async paid_amount(frm) {
+		if (frm.doc.is_return || !frm.doc.is_pos || frm.doc.docstatus) return;
 
-    frappe.validated = false;
+		await frm.set_value("write_off_amount", 0);
+		if (flt(frm.doc.paid_amount) <= flt(frm.doc.grand_total)) return;
 
-    frappe.throw(
-      `Paid amount <strong>
+		const payments_length = frm.doc.payments && frm.doc.payments.length;
+		if (payments_length) {
+			const sum = frm.doc.payments
+				.slice(0, -1)
+				.reduce((a, b) => a + (b.amount || 0), 0);
+			if (sum <= frm.doc.grand_total) {
+				const row = frm.doc.payments[payments_length - 1];
+				frappe.model.set_value(
+					row.doctype,
+					row.name,
+					"amount",
+					flt(frm.doc.grand_total - sum)
+				);
+			} else {
+				for (const row of frm.doc.payments) {
+					row.amount = 0;
+				}
+
+				const first_row = frm.doc.payments[0];
+				frappe.model.set_value(
+					first_row.doctype,
+					first_row.name,
+					"amount",
+					frm.doc.grand_total
+				);
+			}
+		}
+
+		frappe.validated = false;
+
+		frappe.throw(
+			`Paid amount <strong>
       (${format_currency(frm.doc.paid_amount, frm.doc.currency)})
       </strong> cannot be greater than Grand Total <strong>
       (${format_currency(frm.doc.grand_total, frm.doc.currency)})
       </strong>`
-    );
-  },
+		);
+	},
 
-  validate(frm) {
-    frm.trigger("paid_amount");
-  },
+	validate(frm) {
+		frm.trigger("paid_amount");
+	},
 });
+
+function validate_discount_level(frm, write_off_percentage) {
+	const discount_levels = frappe.boot.discount_levels;
+	if (!discount_levels) return;
+
+	for (const role of Object.keys(discount_levels).sort((a, b) => discount_levels[b] - discount_levels[a])) {
+		if (!frappe.user.has_role(role)) continue;
+
+		const discount_allowed = discount_levels[role];
+		if (write_off_percentage > discount_allowed) {
+			frm.set_value('write_off_percentage', discount_allowed);
+			frappe.throw(
+				`You are not permitted to give a discount greater than
+					 ${discount_allowed}% of Grand Total Before Discount`
+			)
+		}
+		break;
+	}
+}
 
 // var get_healthcare_services_to_invoice = function(frm) {
 // 	var me = this;

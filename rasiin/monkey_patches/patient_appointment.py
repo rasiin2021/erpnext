@@ -29,7 +29,7 @@ def create_sales_invoice(appointment_doc):
     sales_invoice.branch = appointment_doc.branch
     sales_invoice.medical_department = appointment_doc.department
     sales_invoice.apply_discount_on = "Grand Total"
-    sales_invoice.discount_amount = appointment_doc.discount_amount
+    sales_invoice.write_off_amount = appointment_doc.discount_amount
 
     item = sales_invoice.append("items", {})
     item = get_appointment_item(appointment_doc, item)

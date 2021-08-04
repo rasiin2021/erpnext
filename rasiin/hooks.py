@@ -11,6 +11,7 @@ app_color = "grey"
 app_email = "sagar@resilient.tech"
 app_license = "MIT"
 after_install = "rasiin.install.after_install"
+boot_session = "rasiin.boot.boot_session"
 
 app_include_js = "/assets/js/rasiin.min.js"
 
