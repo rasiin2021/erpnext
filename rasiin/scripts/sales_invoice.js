@@ -20,10 +20,7 @@ frappe.ui.form.on("Sales Invoice", {
 	},
 
 	async paid_amount(frm) {
-		if (frm.doc.is_return || !frm.doc.is_pos || frm.doc.docstatus) return;
-
-		await frm.set_value("write_off_amount", 0);
-		if (flt(frm.doc.paid_amount) <= flt(frm.doc.grand_total)) return;
+		if (frm.doc.is_return || !frm.doc.is_pos || frm.doc.docstatus || flt(frm.doc.paid_amount) <= flt(frm.doc.grand_total)) return;
 
 		const payments_length = frm.doc.payments && frm.doc.payments.length;
 		if (payments_length) {
