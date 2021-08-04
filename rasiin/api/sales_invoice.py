@@ -3,7 +3,7 @@ from frappe.utils import flt
 
 
 def validate_discount_level(doc, method=None):
-    if doc.discount_amount > 0:
+    if doc.discount_amount:
         frappe.throw("Discount Amount is not allowed, please set Write Off Amount instead")
 
     discount_levels = get_discount_levels()
