@@ -67,6 +67,14 @@ insert_after_map = {
     "Sales Invoice": {
         "customer_group": "customer_name",
         "payments": "total_qty",
+        "column_break4": "items",
+        "write_off_percentage": "column_break4",
+        "write_off_amount": "write_off_percentage",
+        "base_write_off_amount": "write_off_amount",
+        "write_off_outstanding_amount_automatically": "base_write_off_amount",
+        "column_break_74": "write_off_outstanding_amount_automatically",
+        "write_off_account": "column_break_74",
+        "write_off_cost_center": "write_off_account",
     },
     "Customer": {
         "customer_group": "address_html",
@@ -135,6 +143,32 @@ property_setters = (
     ("Sales Invoice", "section_break_88", "hidden", 1, "Check"),
     ("Sales Invoice", "column_break4", "collapsible", 0, "Check"),
     ("Sales Invoice", "section_break_49", "depends_on", "eval:doc.discount_amount"),
+    ("Sales Invoice", "write_off_account", "read_only", 1, "Check"),
+    ("Sales Invoice", "write_off_cost_center", "read_only", 1, "Check"),
+    (
+        "Sales Invoice",
+        "write_off_outstanding_amount_automatically",
+        "hidden",
+        1,
+        "Check",
+    ),
+    ("Sales Invoice", "column_break4", "label", "Discount"),
+    ("Sales Invoice", "write_off_percentage", "label", "Discount Percentage"),
+    ("Sales Invoice", "write_off_amount", "label", "Discount Amount"),
+    (
+        "Sales Invoice",
+        "base_write_off_amount",
+        "label",
+        "Discount Amount (Company Currency)",
+    ),
+    (
+        "Sales Invoice",
+        "write_off_outstanding_amount_automatically",
+        "label",
+        "Discount Outstanding Amount",
+    ),
+    ("Sales Invoice", "write_off_account", "label", "Discount Account"),
+    ("Sales Invoice", "write_off_cost_center", "label", "Discount Cost Center"),
 )
 
 custom_fields = {
