@@ -61,3 +61,5 @@ override_whitelisted_methods = {
         "rasiin.api.patient_appointment.custom_check_payment_fields_reqd"
     ),
 }
+
+# fixtures = ["Workflow", "Workflow State", "Workflow Action Master"]
