@@ -1,4 +1,4 @@
-from rasiin.api.sales_invoice import get_discount_levels
+from rasiin.utils import get_discount_levels
 
 
 def boot_session(bootinfo):
