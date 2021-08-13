@@ -68,20 +68,17 @@ frappe.ui.form.on("Sales Invoice", {
 
 function validate_discount_level(frm, write_off_percentage) {
 	const discount_levels = frappe.boot.discount_levels;
-	if (!discount_levels) return;
 
-	for (const role of Object.keys(discount_levels).sort((a, b) => discount_levels[b] - discount_levels[a])) {
-		if (!frappe.user.has_role(role)) continue;
+	const max_discount_allowed = !jQuery.isEmptyObject(discount_levels)
+		? Math.max(...Object.values(discount_levels))
+		: 100;
 
-		const discount_allowed = discount_levels[role];
-		if (write_off_percentage > discount_allowed) {
-			frm.set_value('write_off_percentage', discount_allowed);
-			frappe.throw(
-				`You are not permitted to give a discount greater than
-					 ${discount_allowed}% of Grand Total Before Discount`
-			)
-		}
-		break;
+	if (write_off_percentage > max_discount_allowed) {
+		frm.set_value('write_off_percentage', max_discount_allowed);
+		frappe.throw(
+			`You are not permitted to give a discount greater than
+			${max_discount_allowed}% of Grand Total Before Discount`
+		);
 	}
 }
 
