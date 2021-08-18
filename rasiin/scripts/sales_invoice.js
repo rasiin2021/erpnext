@@ -1,4 +1,38 @@
 frappe.ui.form.on("Sales Invoice", {
+	setup(frm) {
+		frm.events.hide_fields = function (frm) {
+			let doc = frm.doc;
+			var parent_fields = ['project', 'due_date', 'is_opening', 'source', 'total_advance', 'get_advances',
+				'advances', 'from_date', 'to_date'];
+
+			if (cint(doc.is_pos) == 1) {
+				hide_field(parent_fields);
+			} else {
+				for (var i in parent_fields) {
+					var docfield = frappe.meta.docfield_map[doc.doctype][parent_fields[i]];
+					if (!docfield.hidden) unhide_field(parent_fields[i]);
+				}
+			}
+
+			// India related fields
+			if (frappe.boot.sysdefaults.country == 'India') unhide_field(['c_form_applicable', 'c_form_no']);
+			else hide_field(['c_form_applicable', 'c_form_no']);
+
+			frm.refresh_fields();
+		};
+	},
+
+	refresh(frm) {
+		if (frm.doc.docstatus !== 0 || frm.doc.workflow_state != "Approved") return;
+
+		const editable_fields = ['is_pos', 'payments'];
+		frm.fields
+			.forEach(field => {
+				if (editable_fields.includes(field.df.fieldname)) return;
+				frm.set_df_property(field.df.fieldname, "read_only", "1");
+			});
+	},
+
 	write_off_percentage(frm) {
 		frm.set_value('write_off_amount',
 			flt(
@@ -54,10 +88,10 @@ frappe.ui.form.on("Sales Invoice", {
 
 		frappe.throw(
 			`Paid amount <strong>
-      (${format_currency(frm.doc.paid_amount, frm.doc.currency)})
-      </strong> cannot be greater than Grand Total <strong>
-      (${format_currency(frm.doc.grand_total, frm.doc.currency)})
-      </strong>`
+			(${format_currency(frm.doc.paid_amount, frm.doc.currency)})
+			</strong> cannot be greater than Grand Total <strong>
+			(${format_currency(frm.doc.grand_total, frm.doc.currency)})
+			</strong>`
 		);
 	},
 
