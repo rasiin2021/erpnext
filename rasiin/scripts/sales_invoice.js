@@ -1,5 +1,6 @@
 frappe.ui.form.on("Sales Invoice", {
 	setup(frm) {
+		// Override hide_fields to disable toggle_enable on `write_off_amount`
 		frm.events.hide_fields = function (frm) {
 			let doc = frm.doc;
 			var parent_fields = ['project', 'due_date', 'is_opening', 'source', 'total_advance', 'get_advances',
@@ -17,6 +18,8 @@ frappe.ui.form.on("Sales Invoice", {
 			// India related fields
 			if (frappe.boot.sysdefaults.country == 'India') unhide_field(['c_form_applicable', 'c_form_no']);
 			else hide_field(['c_form_applicable', 'c_form_no']);
+			
+			// frm.toggle_enable("write_off_amount", !!!cint(doc.write_off_outstanding_amount_automatically));
 
 			frm.refresh_fields();
 		};
@@ -29,7 +32,7 @@ frappe.ui.form.on("Sales Invoice", {
 		frm.fields
 			.forEach(field => {
 				if (editable_fields.includes(field.df.fieldname)) return;
-				frm.set_df_property(field.df.fieldname, "read_only", "1");
+				frm.set_df_property(field.df.fieldname, "read_only", 1);
 			});
 	},
 
