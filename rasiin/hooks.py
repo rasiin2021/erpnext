@@ -25,6 +25,7 @@ doctype_js = {
 doctype_list_js = {
     "Issue": "scripts/issue_list.js",
     "Patient Appointment": "scripts/patient_appointment_list.js",
+    "Sales Invoice": "scripts/sales_invoice_list.js",
 }
 
 doc_events = {
