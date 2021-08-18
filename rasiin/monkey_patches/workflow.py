@@ -7,7 +7,7 @@ old_get_workflow_safe_globals = workflow.get_workflow_safe_globals
 
 def get_workflow_safe_globals():
     safe_globals = old_get_workflow_safe_globals()
-    safe_globals["allowed_discount"] = get_allowed_discount()
+    safe_globals["get_allowed_discount"] = get_allowed_discount
     return safe_globals
 
 
