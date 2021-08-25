@@ -1,6 +1,5 @@
 const to_remove = {
   "Purchase Receipt": [
-    "Purchase Return",
     "Make Stock Entry",
     "Retention Stock Entry",
     "Subscription",
