@@ -5,6 +5,13 @@ from frappe.utils import getdate, get_time, flt
 from erpnext.healthcare.doctype.patient_appointment.patient_appointment import PatientAppointment
 
 class CustomPatientAppointment(PatientAppointment):
+	def set_payment_details(self, *args, **kwargs):
+		actual_paid_amount = self.paid_amount
+		self.paid_amount = 1
+		out = super().set_payment_details(*args, **kwargs)
+		self.paid_amount = actual_paid_amount
+		return out
+
 	def validate_overlaps(self):
 		end_time = datetime.datetime.combine(
 			getdate(self.appointment_date), get_time(self.appointment_time)

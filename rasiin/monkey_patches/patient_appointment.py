@@ -56,8 +56,6 @@ def create_sales_invoice(appointment_doc):
     )
 
 
-patient_appointment.create_sales_invoice = create_sales_invoice
-
 
 def invoice_appointment(appointment_doc):
     automate_invoicing = frappe.db.get_single_value(
