@@ -19,6 +19,15 @@ frappe.ui.form.on("Patient Appointment", {
         }
     },
     refresh(frm) {
+        // let status = "Active"
+        // frm.set_query('practitioner', () => {
+        //     return {
+        //         query: "rasiin.api.practitioner_filter.practitioner_filter",
+        //             filters: {
+        //                         "status": status
+        //                     }
+        //             }
+        // })
         if (!frm.is_new()) return;
 
         frm.page.set_primary_action(__('Check Availability'), function() {

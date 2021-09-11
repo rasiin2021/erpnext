@@ -1,5 +1,6 @@
 {
- "autoname": "field:patient_name",
+ "actions": [],
+ "autoname": "TR.######",
  "creation": "2021-01-11 20:35:48.652871",
  "doctype": "DocType",
  "document_type": "Document",
@@ -8,9 +9,8 @@
  "field_order": [
   "patient",
   "patient_name",
-  "symptoms",
-  "practitioner_name",
   "medical_department",
+  "practitioner_name",
   "amended_from"
  ],
  "fields": [
@@ -24,14 +24,7 @@
    "fetch_from": "patient_name.patient",
    "fieldname": "patient_name",
    "fieldtype": "Data",
-   "label": "Patient Name",
-   "unique": 1
-  },
-  {
-   "fieldname": "symptoms",
-   "fieldtype": "Table MultiSelect",
-   "label": "Symptoms",
-   "options": "Symptoms"
+   "label": "Patient Name"
   },
   {
    "fieldname": "practitioner_name",
@@ -56,7 +49,8 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2021-06-25 16:13:17.184252",
+ "links": [],
+ "modified": "2021-09-11 15:55:17.677788",
  "modified_by": "Administrator",
  "module": "Rasiin",
  "name": "Triage",

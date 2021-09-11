@@ -91,7 +91,7 @@ def add_drug_items(so, doc):
         ):
             so_item.qty = row.get_quantity()
 
-        so_item.description = ""
+        so_item.description = row.drug_name
         if row.dosage and row.period:
             so_item.description = _("{0} for {1}").format(row.dosage, row.period)
 
@@ -162,3 +162,10 @@ def find_or_create_item(row, so, doc):
 
     so.__updated_items.append(item.reference_dn)
     return item
+
+
+@frappe.whitelist()
+def appointment_type(patient):
+    last_appointment = frappe.db.sql(f"""select name, patient, patient_name from `tabPatient Appointment` where patient = '{patient}' and status in ('Open', 'Schedule') ORDER BY creation DESC LIMIT 1;
+""", as_dict = True)[0].name
+    return last_appointment

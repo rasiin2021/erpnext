@@ -20,6 +20,7 @@ doctype_js = {
     "Material Request": "scripts/material_request.js",
     "Lab Test": "scripts/lab_test.js",
     "Patient Appointment": "scripts/patient_appointment.js",
+    "Patient Encounter": "scripts/patient_encounter_form.js",
 }
 
 doctype_list_js = {
